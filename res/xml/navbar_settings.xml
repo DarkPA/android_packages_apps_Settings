@@ -23,7 +23,7 @@
         android:key="navigation_bar"
         android:fragment="com.android.settings.cyanogenmod.NavigationBar"
         android:summary="@string/navigation_bar_summary"
-        android:title="@string/navbar_buttons_title" />
+        android:title="@string/nav_rings_title" />
 
     <PreferenceScreen
   android:key="navigation_bar_advanced"

@@ -53,7 +53,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
     private PreferenceCategory mPrefCategory;
-    private Preference mStockColor;
+    private Preference mResetColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +69,8 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
         mNavbarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
-        mStockColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
-        mStockColor.setOnPreferenceClickListener(this);
+        mResetColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
+        mResetColor.setOnPreferenceClickListener(this);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
