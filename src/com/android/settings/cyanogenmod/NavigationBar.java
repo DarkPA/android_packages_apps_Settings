@@ -34,9 +34,11 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener  {
 
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
+    private static final String PREF_NAV_BAR_COLOR = "navbar_color";	
+    private static final String PREF_NAV_BAR_COLOR_DEF = "navbar_color_default";
     private static final String NAV_BAR_STATUS = "nav_bar_status";
     private static final String NAV_BAR_TRANSPARENCY = "nav_bar_transparency";
     private static final String NAV_BAR_EDITOR = "nav_bar_editor";
@@ -45,6 +47,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
     private CheckBoxPreference mNavigationBarShow;
     private ListPreference mNavigationBarTransparency;
+    private ColorPickerPreference mNavBar;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
@@ -58,11 +61,15 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        mNavBar = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
+        mNavBar.setOnPreferenceChangeListener(this);
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
         mNavbarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
         mNavigationBarTransparency = (ListPreference) prefSet.findPreference(NAV_BAR_TRANSPARENCY);
+        mStockColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
+        mStockColor.setOnPreferenceClickListener(this);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
@@ -97,11 +104,29 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+
         if (preference == mNavigationBarTransparency) {
             int navBarTransparency = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TRANSPARENCY, navBarTransparency);
             return true;
+        }
+        else if (preference == mNavBar) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVBAR_COLOR, intHex);
+            return true;
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference pref) {
+        // TODO Auto-generated method stub
+        if (pref.equals(mStockColor)) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVBAR_COLOR, Settings.System.SYSTEMUI_NAVBAR_COLOR_DEF);
         }
         return false;
     }

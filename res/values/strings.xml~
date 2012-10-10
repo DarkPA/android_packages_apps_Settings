@@ -4308,7 +4308,7 @@
     <string name="toggle_style_summary">Whether to show icon or text on toggles</string>
     <string name="toggle_only_icon">Icon only</string>
     <string name="toggle_only_text">Text only</string>
-    <string name="toggles_layout_title">Toggle Layout</string>
+    <string name="toggles_layout_title">Toggle layout</string>
     <string name="toggle_layout_switch">On/off switch</string>
     <string name="toggle_layout_toggle">Toggle button</string>
     <string name="toggle_layout_button">Holo button</string>
@@ -4363,6 +4363,9 @@
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
+    <string name="navigation_bar_left_title">Navigation bar on left</string>
+    <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A rebo
+ot is recommended!)</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>
@@ -4399,7 +4402,9 @@
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
     <string name="status_bar_weekday_title">Day of the week style</string>
-    <string name="status_bar_weekday_summary">Abbreviated day of the week before the clock</string>
+    <string name="status_bar_weekday_summary">Show abbreviated day of the week aside the clock</string>
+    <string name="status_bar_daymonth_title">Day and month style</string>
+    <string name="status_bar_daymonth_summary">Show current day and month aside the clock</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
@@ -4408,20 +4413,24 @@
     <string name="status_bar_style_icon">Icon</string>
     <string name="status_bar_style_hidden">Hidden</string>
     <string name="status_bar_signal_text_show_text">Text</string>
-<<<<<<< HEAD
-    <string name="status_bar_signal_text_hidden">Hidden</string>
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
     <string name="status_bar_donotdisturb_title">Do not disturb</string>
+<<<<<<< HEAD
     <string name="status_bar_transparency_title">Transparency</string>
     <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
     <string name="status_bar_donotdisturb_summary">Disable ticker animation for incoming notifications</string>
     <string name="status_bar_battery_status_icon">Icon (default)</string> <!-- TODO: dedup -->
-=======
->>>>>>> 432ee7d... Settings (Status Bar): Dedup strings
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
+=======
+    <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
+    <string name="navbar_color_title">Navigation bar color</string>
+    <string name="navbar_color_summary">Change the color of the navigation bar</string>
+    <string name="navbar_restore_stock_color">Restore stock navigation bar color</string>
+    <string name="navbar_restore_stock_color_summary">Restore stock black color of the navigation bar</string>
+>>>>>>> 4ba5da9... NavBar Color (2/2)
 
     <string name="lock_screen_title">Lock screen</string>
 
@@ -4916,7 +4925,6 @@
     <string name="volume_key_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
-<<<<<<< HEAD
     <!-- Performance Settings | Warning dialog -->
     <string name="performance_settings_warning_header">Warning</string>
 
