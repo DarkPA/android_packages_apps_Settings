@@ -36,6 +36,7 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
+    private static final String STATUS_BAR_CATEGORY_CLOCK = "status_bar_clock";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String NUMBER_NOT_ICONS = "status_bar_max_notifications";
@@ -63,6 +64,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private PreferenceCategory mPrefCategoryGeneral;
     private CheckBoxPreference mBattText;
+    private PreferenceCategory mPrefCategoryClock;
 
     PreferenceScreen mBattColor;
 
@@ -156,9 +158,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
+        mPrefCategoryClock = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_CLOCK);
 
         if (Utils.isTablet()) {
-            mPrefCategoryGeneral.removePreference(mStatusBarCenterClock);
+            mPrefCategoryClock.removePreference(mStatusBarCenterClock);
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
