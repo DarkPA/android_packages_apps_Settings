@@ -4405,8 +4405,10 @@
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
     <string name="status_bar_signal_text_title">Signal status style</string>
-    <string name="status_bar_signal_text_show_bars">Icon (default)</string>
+    <string name="status_bar_style_icon">Icon</string>
+    <string name="status_bar_style_hidden">Hidden</string>
     <string name="status_bar_signal_text_show_text">Text</string>
+<<<<<<< HEAD
     <string name="status_bar_signal_text_hidden">Hidden</string>
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
@@ -4415,10 +4417,11 @@
     <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
     <string name="status_bar_donotdisturb_summary">Disable ticker animation for incoming notifications</string>
     <string name="status_bar_battery_status_icon">Icon (default)</string> <!-- TODO: dedup -->
+=======
+>>>>>>> 432ee7d... Settings (Status Bar): Dedup strings
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
-    <string name="status_bar_battery_status_hidden">Hidden</string> <!-- TODO: dedup -->
 
     <string name="lock_screen_title">Lock screen</string>
 
@@ -4913,6 +4916,7 @@
     <string name="volume_key_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
+<<<<<<< HEAD
     <!-- Performance Settings | Warning dialog -->
     <string name="performance_settings_warning_header">Warning</string>
 
@@ -4984,5 +4988,16 @@
 
     <!-- Something wow -->
     <string name="lockscreen_text_color_title">Lockscreen text color</string>
+=======
+    <!-- CM Updater -->
+    <string name="cmupdate_settings_title">CyanogenMod updates</string>
+    <string name="cmupdate_settings_summary">Check for, view or install available updates</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">App security</string>
+    <string name="sms_security_check_limit_title">SMS message limit</string>
+    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending sms messages too requently. Currently: %d messages in 15 min</string>
+    <string name="sms_security_check_limit_default">30 (Default)</string>
+>>>>>>> 432ee7d... Settings (Status Bar): Dedup strings
 
 </resources>
