@@ -4312,6 +4312,7 @@
     <string name="toggle_layout_switch">Switch</string>
     <string name="toggle_layout_toggle">Toggle</string>
     <string name="toggle_layout_button">Button</string>
+    <string name="toggle_layout_multirow">Multi-row</string>
     <string name="enabled_toggles_title">Enabled toggles</string>
     <string name="enabled_toggles_summary">Choose toggles to display</string>
     <string name="toggles_display_dialog">Choose which toggles to use</string>
@@ -4405,20 +4406,21 @@
     <string name="status_bar_signal_text_show_bars">Icon (default)</string>
     <string name="status_bar_signal_text_show_text">Text</string>
     <string name="status_bar_signal_text_hidden">Hidden</string>
-<<<<<<< HEAD
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
     <string name="status_bar_donotdisturb_title">Do not disturb</string>
+<<<<<<< HEAD
     <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
     <string name="status_bar_transparency_title">Transparency</string>
     <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
 =======
+    <string name="status_bar_donotdisturb_summary">Disable ticker animation for incoming notifications</string>
+>>>>>>> 52ca272... revert do-not-disturb
     <string name="status_bar_battery_status_icon">Icon (default)</string> <!-- TODO: dedup -->
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
     <string name="status_bar_battery_status_hidden">Hidden</string> <!-- TODO: dedup -->
->>>>>>> bad6422... Add CmCircleBattery to StatusBar options (2/2)
 
     <string name="lock_screen_title">Lock screen</string>
 
