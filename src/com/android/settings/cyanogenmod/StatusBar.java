@@ -51,6 +51,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String BATTERY_TEXT = "battery_text";
     private static final String BATTERY_TEXT_COLOR = "battery_text_color";
     private static final String STATUS_BAR_WEEKDAY = "status_bar_weekday";
+    private static final String STATUS_BAR_DAYMONTH = "status_bar_daymonth";
 
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
@@ -58,6 +59,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarCmSignal;
     private ListPreference mStatusbarTransparency;
     private ListPreference mStatusBarWeekday;
+    private ListPreference mStatusBarDaymonth;
     private CheckBoxPreference mStatusBarClock;
     private CheckBoxPreference mStatusBarCenterClock;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -84,6 +86,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarAmPm = (ListPreference) prefSet.findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mStatusBarWeekday = (ListPreference) prefSet.findPreference(STATUS_BAR_WEEKDAY);
+        mStatusBarDaymonth = (ListPreference) prefSet.findPreference(STATUS_BAR_DAYMONTH);
         mMaxNotIcons = (ListPreference) prefSet.findPreference(NUMBER_NOT_ICONS);
         mCombinedBarAutoHide = (CheckBoxPreference) prefSet.findPreference(COMBINED_BAR_AUTO_HIDE);
         mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
@@ -136,6 +139,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarWeekday.setValue(String.valueOf(statusBarWeekday));
         mStatusBarWeekday.setSummary(mStatusBarWeekday.getEntry());
         mStatusBarWeekday.setOnPreferenceChangeListener(this);
+
+        int statusBarDaymonth = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_DAYMONTH, 2);
+        mStatusBarDaymonth.setValue(String.valueOf(statusBarDaymonth));
+        mStatusBarDaymonth.setSummary(mStatusBarDaymonth.getEntry());
+        mStatusBarDaymonth.setOnPreferenceChangeListener(this);
 
         int statusBarBattery = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_BATTERY, 0);
@@ -201,6 +210,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_WEEKDAY, statusBarWeekday);
             mStatusBarWeekday.setSummary(mStatusBarWeekday.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarDaymonth) {
+            int statusBarDaymonth = Integer.valueOf((String) newValue);
+            int index = mStatusBarDaymonth.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_DAYMONTH, statusBarDaymonth);
+            mStatusBarDaymonth.setSummary(mStatusBarDaymonth.getEntries()[index]);
             return true;
         } else if (preference == mStatusBarBattery) {
             int statusBarBattery = Integer.valueOf((String) newValue);
