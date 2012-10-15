@@ -41,11 +41,13 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     private static final String NAV_BAR_TRANSPARENCY = "nav_bar_transparency";
     private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
+    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
     private CheckBoxPreference mNavigationBarShow;
     private ListPreference mNavigationBarTransparency;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
+    private CheckBoxPreference mNavbarLeftPref;
     private PreferenceCategory mPrefCategory;
 
     @Override
@@ -59,6 +61,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
+        mNavbarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
         mNavigationBarTransparency = (ListPreference) prefSet.findPreference(NAV_BAR_TRANSPARENCY);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
@@ -71,6 +74,9 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
         mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
+
+        mNavbarLeftPref.setChecked((Settings.System.getInt(getContentResolver(),
+	        Settings.System.NAVBAR_LEFT, 0)) == 1);
 
         mNavigationBarEditor.setEnabled(mNavigationBarShow.isChecked());
         mMenuButtonShow.setEnabled(mNavigationBarShow.isChecked());
@@ -114,6 +120,12 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             value = mMenuButtonShow.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TABUI_MENU, value ? 1 : 0);
+            return true;
+        }
+        else if (preference == mNavbarLeftPref) {
+            value = mNavbarLeftPref.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAVBAR_LEFT, value ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
