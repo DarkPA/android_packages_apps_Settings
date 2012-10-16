@@ -55,7 +55,6 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
     private PreferenceCategory mPrefCategory;
-    private Preference mStockColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
