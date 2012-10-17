@@ -17,8 +17,8 @@
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Paranoid Header -->
-    <header android:title="@string/paranoid_title" />
+    <!-- PARANOID CUSTOMISATION -->
+    <header android:title="@string/header_category_paranoid" />
 
     <!-- ParanoidAndroid Header -->
     <header

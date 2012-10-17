@@ -4283,6 +4283,9 @@
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">Advanced</string>
 
+    <!-- PARANOID Settings -->
+    <string name="header_category_paranoid">Paranoid Customisation</string>
+
     <!-- INTERFACE Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_interface">INTERFACE</string>
@@ -4296,7 +4299,6 @@
     <!-- System Interface settings  -->
     <string name="system_settings_title">System</string>
     <string name="system_interface_title">System interface</string>
-    <string name="paranoid_title">Paranoid Customisation</string>
     
     <!-- ParanoidAndroid settings intent -->
     <string name="paranoid_settings">Hybrid</string>
@@ -4358,7 +4360,10 @@
     <string name="combined_bar_auto_hide_summary">Allow combined bar to hide when showing a fullscreen app</string>
 
     <!-- Navigation Bar  -->
+    <string name="navigation_bar_button_cat">Navigation bar controls</string>
+    <string name="navigation_bar_color_cat">Color and behavior</string>
     <string name="navigation_bar_title">Navigation bar</string>
+    <string name="navigation_bar_editor_title">Control-button editor</string>
     <string name="navigation_bar_status_title">Software buttons</string>
     <string name="navigation_bar_status_summary">Show on screen software buttons</string>
     <string name="navigation_bar_transparency_title">Transparency</string>
@@ -5029,6 +5034,7 @@
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
+<<<<<<< HEAD
     <!-- Navigiation Bar Glow Settings -->
     <string name="navigation_bar_tint_title">Softkeys color</string>
     <string name="navigation_bar_glow_tint_title">Glow color</string>
@@ -5038,6 +5044,24 @@
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
+=======
+     <!-- Color Picker -->
+    <string name="dialog_color_picker">Color picker</string>
+    <string name="press_color_to_apply">Press on color to apply</string>
+    <string name="hex">Hex:</string>
+    <string name="arrow_right" translatable="false">→</string>
+    <string name="arrow_down" translatable="false">↓</string>
+
+    <!-- Navigiation Bar Color Settings -->
+    <string name="navigation_bar_color_title">Navigation bar color</string>
+    <string name="navigation_button_color_title">Navigation bar button color</string>
+    <string name="navigation_glow_color_title">Navigation bar glow color</string>
+    <string name="navigation_bar_color_summary">Changes the color of the navigation bar.</string>
+    <string name="navigation_button_color_summary">Changes the color of the navigation controls.</string>
+    <string name="navigation_glow_color_summary">Changes the color of the on-touch glow.</string>
+    <string name="navigation_bar_restore_stock_color">Restore color</string>
+    <string name="navigation_bar_restore_stock_color_summary">Restore default navigation bar color</string>
+>>>>>>> a8caddb... Nav Bar: Button color & Glow color and duration
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
