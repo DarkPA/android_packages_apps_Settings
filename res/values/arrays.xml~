@@ -1021,6 +1021,7 @@
         <item>2</item>
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="entries_transparency">
         <item>0%</item>
         <item>25%</item>
@@ -1035,6 +1036,18 @@
         <item>50</item>
         <item>25</item>
         <item>0</item>
+=======
+    <string-array name="entries_status_bar_weekday_format">
+        <item>Short (default)</item>
+        <item>Medium</item>
+        <item>Long</item>
+    </string-array>
+
+    <string-array name="values_status_bar_weekday_format" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+>>>>>>> 8d4f0a1... Different formats of day of the week (2/2)
     </string-array>
 
     <string-array name="entries_status_bar_battery" translatable="false">
@@ -1803,6 +1816,20 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="glow_times_entries">
+  <item>@string/glow_times_off</item>
+  <item>@string/glow_times_superquick</item>
+  <item>@string/glow_times_quick</item>
+  <item>@string/glow_times_normal</item>
+    </string-array>
+    
+    <string-array name="glow_times_values" translatable="false">
+  <item>0|0</item>
+  <item>100|10</item>
+  <item>250|25</item>
+  <item>500|50</item>
     </string-array>
 
 </resources>

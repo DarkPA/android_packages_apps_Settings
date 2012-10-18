@@ -54,6 +54,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String BATTERY_TEXT = "battery_text";
     private static final String BATTERY_TEXT_COLOR = "battery_text_color";
     private static final String STATUS_BAR_WEEKDAY = "status_bar_weekday";
+    private static final String STATUS_BAR_WEEKDAY_FORMAT = "status_bar_weekday_format";
     private static final String STATUS_BAR_DAYMONTH = "status_bar_daymonth";
     private static final String PREF_COLOR_PICKER = "clock_color";
 
@@ -64,6 +65,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarCmSignal;
     private ColorPickerPreference mStatusbarBgColor;
     private ListPreference mStatusBarWeekday;
+    private ListPreference mStatusBarWeekdayFormat;
     private ListPreference mStatusBarDaymonth;
     private CheckBoxPreference mStatusBarClock;
     private CheckBoxPreference mStatusBarCenterClock;
@@ -91,6 +93,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarAmPm = (ListPreference) prefSet.findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mStatusBarWeekday = (ListPreference) prefSet.findPreference(STATUS_BAR_WEEKDAY);
+        mStatusBarWeekdayFormat = (ListPreference) prefSet.findPreference(STATUS_BAR_WEEKDAY_FORMAT);
+        if (Utils.isTablet()) {
+            mStatusBarWeekdayFormat.setEntries(new String[]{"Short","Medium"});
+            mStatusBarWeekdayFormat.setEntryValues(new String[]{"0", "1"});
+        }
         mStatusBarDaymonth = (ListPreference) prefSet.findPreference(STATUS_BAR_DAYMONTH);
         mMaxNotIcons = (ListPreference) prefSet.findPreference(NUMBER_NOT_ICONS);
         mCombinedBarAutoHide = (CheckBoxPreference) prefSet.findPreference(COMBINED_BAR_AUTO_HIDE);
@@ -148,6 +155,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarWeekday.setValue(String.valueOf(statusBarWeekday));
         mStatusBarWeekday.setSummary(mStatusBarWeekday.getEntry());
         mStatusBarWeekday.setOnPreferenceChangeListener(this);
+
+        int statusBarWeekdayFormat = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_WEEKDAY_FORMAT, 0);
+        mStatusBarWeekdayFormat.setValue(String.valueOf(statusBarWeekdayFormat));
+        mStatusBarWeekdayFormat.setSummary(mStatusBarWeekdayFormat.getEntry());
+        mStatusBarWeekdayFormat.setOnPreferenceChangeListener(this);
 
         int statusBarDaymonth = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_DAYMONTH, 2);
@@ -216,7 +229,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     Settings.System.STATUS_BAR_WEEKDAY, statusBarWeekday);
             mStatusBarWeekday.setSummary(mStatusBarWeekday.getEntries()[index]);
             return true;
-        } else if (preference == mStatusBarDaymonth) {
+        } else if (preference == mStatusBarWeekdayFormat) {
+            int statusBarWeekdayFormat = Integer.valueOf((String) newValue);
+            int index = mStatusBarWeekdayFormat.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_WEEKDAY_FORMAT, statusBarWeekdayFormat);
+            mStatusBarWeekdayFormat.setSummary(mStatusBarWeekdayFormat.getEntries()[index]);
+            return true;
+        }  else if (preference == mStatusBarDaymonth) {
             int statusBarDaymonth = Integer.valueOf((String) newValue);
             int index = mStatusBarDaymonth.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),

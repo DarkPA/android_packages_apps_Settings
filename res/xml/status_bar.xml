@@ -53,6 +53,13 @@
             android:entryValues="@array/values_status_bar_clock" />
 
         <ListPreference
+            android:key="status_bar_weekday_format"
+            android:title="@string/status_bar_weekday_format_title"
+            android:summary="@string/status_bar_weekday_format_summary"
+            android:entries="@array/entries_status_bar_weekday_format"
+            android:entryValues="@array/values_status_bar_weekday_format" />
+
+        <ListPreference
             android:key="status_bar_daymonth"
             android:title="@string/status_bar_daymonth_title"
             android:summary="@string/status_bar_daymonth_summary"
