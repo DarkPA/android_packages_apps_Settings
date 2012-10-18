@@ -1021,6 +1021,7 @@
         <item>2</item>
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="entries_transparency">
         <item>0%</item>
         <item>25%</item>
@@ -1040,6 +1041,11 @@
     <string-array name="entries_status_bar_weekday_format">
         <item>Short (default)</item>
         <item>Medium</item>
+=======
+    <string-array name="entries_status_bar_weekday_format">
+        <item>Short</item>
+        <item>Medium (default)</item>
+>>>>>>> 4fe4721... Different formats of day of the week (2/2)
         <item>Long</item>
     </string-array>
 
@@ -1834,6 +1840,10 @@
     <string-array name="navring_dialog_entries">
         <item>None</item>
         <item>Take Screenshot</item>
+        <item>Open IME Switcher</item>
+        <item>Ring/Vib</item>
+        <item>Ring/Silent</item>
+        <item>Ring/Vib/Silent</item>
         <item>Kill App</item>
         <item>Screen Off</item>
         <item>Google Now</item>
@@ -1843,6 +1853,10 @@
     <string-array name="navring_dialog_values">
         <item>none</item>
         <item>screenshot</item>
+        <item>ime_switcher</item>
+        <item>ring_vib</item>
+        <item>ring_silent</item>
+        <item>ring_vib_silent</item>
         <item>killcurrent</item>
         <item>screenoff</item>
         <item>assist</item>

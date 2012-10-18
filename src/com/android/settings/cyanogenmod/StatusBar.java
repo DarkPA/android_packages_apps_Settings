@@ -95,7 +95,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarWeekday = (ListPreference) prefSet.findPreference(STATUS_BAR_WEEKDAY);
         mStatusBarWeekdayFormat = (ListPreference) prefSet.findPreference(STATUS_BAR_WEEKDAY_FORMAT);
         if (Utils.isTablet()) {
-            mStatusBarWeekdayFormat.setEntries(new String[]{"Short","Medium"});
+            mStatusBarWeekdayFormat.setEntries(new String[]{"Short","Medium (default)"});
             mStatusBarWeekdayFormat.setEntryValues(new String[]{"0", "1"});
         }
         mStatusBarDaymonth = (ListPreference) prefSet.findPreference(STATUS_BAR_DAYMONTH);
@@ -157,7 +157,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarWeekday.setOnPreferenceChangeListener(this);
 
         int statusBarWeekdayFormat = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+<<<<<<< HEAD
                 Settings.System.STATUS_BAR_WEEKDAY_FORMAT, 0);
+=======
+                Settings.System.STATUS_BAR_WEEKDAY_FORMAT, 1);
+>>>>>>> 4fe4721... Different formats of day of the week (2/2)
         mStatusBarWeekdayFormat.setValue(String.valueOf(statusBarWeekdayFormat));
         mStatusBarWeekdayFormat.setSummary(mStatusBarWeekdayFormat.getEntry());
         mStatusBarWeekdayFormat.setOnPreferenceChangeListener(this);
