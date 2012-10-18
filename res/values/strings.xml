@@ -4298,7 +4298,7 @@
     <string name="system_interface_title">System interface</string>
     
     <!-- ParanoidAndroid settings intent -->
-    <string name="paranoid_settings">Paranoid Settings</string>
+    <string name="paranoid_settings">Hybrid Settings</string>
 
     <!-- Statusbar Toggles -->
     <string name="notification_drawer_toggles_title">Notification toggles</string>
@@ -4352,7 +4352,7 @@
     <string name="navigation_bar_status_title">Software buttons</string>
     <string name="navigation_bar_status_summary">Show on screen software buttons</string>
     <string name="navigation_bar_transparency_title">Transparency</string>
-    <string name="navigation_bar_transparency_summary">Adjust navigation bar transparency</string>
+    <string name="navigation_bar_transparency_summary">Adjust navigation bar transparency (You might experiences flickers!)</string>
     <string name="navigation_bar_tabui_menu_title">Split menu button</string>
     <string name="navigation_bar_tabui_menu_summary">Show separate menu button instead of merging it to recents button</string>
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
@@ -4364,8 +4364,29 @@
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
     <string name="navigation_bar_left_title">Navigation bar on left</string>
-    <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A rebo
-ot is recommended!)</string>
+    <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A reboot is recommended!)</string>
+    <string name="navbar_color_title">Navigation bar color</string>
+    <string name="navbar_color_summary">Change the color of the navigation bar</string>
+    <string name="navbar_restore_stock_color">Restore stock navigation bar color</string>
+    <string name="navbar_restore_stock_color_summary">Restore stock black color of the navigation bar</string>
+    <string name="navigation_bar_summary">Add/remove softkeys, change order</string>
+    <string name="navbar_advanced_summary">Softkey color, glow color, speed, etc..</string>
+    <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering, which make your usage ugly. Try not to set Transparency, i would go for Colors instead.</string>
+    <string name="menu_nav_bar_reset">Reset navigation bar</string>
+
+    <!-- Advanced Navbar settings -->
+    <string name="navbar_buttons_title">Navigation bar buttons</string>
+    <string name="navbar_advanced_title">Navigation bar customizer</string>
+    <string name="color_settings">Color Settings</string>
+    <string name="button_transparency_title">Nav button transparency</string>
+    <string name="navigation_bar_tint_title">Navigation bar color</string>
+    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
+    <string name="glow_times_title">Button glow animation</string>
+    <string name="glow_times_off">Off</string>
+    <string name="glow_times_superquick">Super quick</string>
+    <string name="glow_times_quick">Quick</string>
+    <string name="glow_times_normal">Normal</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>
@@ -4394,9 +4415,10 @@ ot is recommended!)</string>
 
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
-    <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_title">Statusbar</string>
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
+    <string name="extra_misc_title">Misc</string>
     <string name="status_bar_show_clock_title">Show clock</string>
     <string name="status_bar_center_clock_title">Center clock</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
@@ -4423,10 +4445,8 @@ ot is recommended!)</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
     <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
-    <string name="navbar_color_title">Navigation bar color</string>
-    <string name="navbar_color_summary">Change the color of the navigation bar</string>
-    <string name="navbar_restore_stock_color">Restore stock navigation bar color</string>
-    <string name="navbar_restore_stock_color_summary">Restore stock black color of the navigation bar</string>
+    <string name="statusbar_background_color">Statusbar background color</string>
+    <string name="clock_color_title">Clock color</string>
 
     <string name="lock_screen_title">Lock screen</string>
 
@@ -4874,7 +4894,7 @@ ot is recommended!)</string>
 
     <!-- About phone screen,  setting option name-->
     <string name="cm_version">CyanogenMod version</string>
-    <string name="pa_version">ParanoidAndroid version</string>
+    <string name="pa_version">DARKPA version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Build date</string>

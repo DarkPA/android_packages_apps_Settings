@@ -17,6 +17,7 @@
 package com.android.settings.cyanogenmod;
 
 import android.os.Bundle;
+import android.content.Context;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -30,6 +31,8 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.util.CMDProcessor;
+import com.android.settings.util.Helpers;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -47,17 +50,19 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String COMBINED_BAR_AUTO_HIDE = "combined_bar_auto_hide";
     private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
-    private static final String STATUS_BAR_TRANSPARENCY = "status_bar_transparency";
+    private static final String PREF_STATUSBAR_BACKGROUND_COLOR = "statusbar_background_color";
     private static final String BATTERY_TEXT = "battery_text";
     private static final String BATTERY_TEXT_COLOR = "battery_text_color";
     private static final String STATUS_BAR_WEEKDAY = "status_bar_weekday";
     private static final String STATUS_BAR_DAYMONTH = "status_bar_daymonth";
+    private static final String PREF_COLOR_PICKER = "clock_color";
 
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
     private ListPreference mMaxNotIcons;
+    private ColorPickerPreference mColorPicker;
     private ListPreference mStatusBarCmSignal;
-    private ListPreference mStatusbarTransparency;
+    private ColorPickerPreference mStatusbarBgColor;
     private ListPreference mStatusBarWeekday;
     private ListPreference mStatusBarDaymonth;
     private CheckBoxPreference mStatusBarClock;
@@ -91,7 +96,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mCombinedBarAutoHide = (CheckBoxPreference) prefSet.findPreference(COMBINED_BAR_AUTO_HIDE);
         mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
-        mStatusbarTransparency = (ListPreference) prefSet.findPreference(STATUS_BAR_TRANSPARENCY);
+        mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
+        mColorPicker.setOnPreferenceChangeListener(this);
+
+        mStatusbarBgColor = (ColorPickerPreference) findPreference(PREF_STATUSBAR_BACKGROUND_COLOR);
+        mStatusbarBgColor.setOnPreferenceChangeListener(this);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
@@ -157,11 +166,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mMaxNotIcons.setValue(String.valueOf(maxNotIcons));
         mMaxNotIcons.setOnPreferenceChangeListener(this);
 
-        int statusBarTransparency = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_TRANSPARENCY, 100);
-        mStatusbarTransparency.setValue(String.valueOf(statusBarTransparency));
-        mStatusbarTransparency.setOnPreferenceChangeListener(this);
-
         int signalStyle = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_SIGNAL_TEXT, 0);
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
@@ -180,6 +184,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         if (Utils.isTablet()) {
             mPrefCategoryClock.removePreference(mStatusBarCenterClock);
+            mPrefCategoryGeneral.removePreference(mBattText);
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
@@ -230,10 +235,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.MAX_NOTIFICATION_ICONS, maxNotIcons);
             return true;
-        } else if (preference == mStatusbarTransparency) {
-            int statusBarTransparency = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_TRANSPARENCY, statusBarTransparency);
+        } else if (preference == mStatusbarBgColor) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
+                    .valueOf(newValue)));
+            preference.setSummary(hex);
+
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_BACKGROUND_COLOR, intHex);
+            Log.e("CYANOGENMOD", intHex + "");
             return true;
     	} else if (preference == mStatusBarCmSignal) {
             int signalStyle = Integer.valueOf((String) newValue);
@@ -241,6 +251,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
+            return true;
+        } else if (preference == mColorPicker) {
+           String hex = ColorPickerPreference.convertToARGB(Integer
+                    .valueOf(String.valueOf(newValue)));
+           preference.setSummary(hex);
+           
+           int intHex = ColorPickerPreference.convertToColorInt(hex);
+           Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
             return true;
         }
         return false;
