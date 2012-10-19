@@ -36,6 +36,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+
 public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener  {
 
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
@@ -45,12 +46,17 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
+    private static final String NAV_COLOR = "nav_button_color";
+    private static final String NAV_GLOW_COLOR = "nav_button_glow_color";
+    private static final String GLOW_TIMES = "glow_times";
 
     private CheckBoxPreference mNavigationBarShow;
     private ColorPickerPreference mNavigationBarColor;
+    private ColorPickerPreference mNavigationBarGlowColor;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
+    private ListPreference mGlowTimes;
     private PreferenceCategory mPrefCategory;
     private Preference mResetColor;
 
@@ -62,14 +68,18 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
+        mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
         mNavigationBarColor.setAlphaSliderEnabled(true);
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
+        mNavigationBarGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
+        mNavigationBarGlowColor.setOnPreferenceChangeListener(this);
+        mGlowTimes = (ListPreference) findPreference(GLOW_TIMES);
+        mGlowTimes.setOnPreferenceChangeListener(this);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
         mNavbarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
-        mResetColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
+        mResetColor = (Preference) findPreference(NAV_BAR_COLOR_DEF);
         mResetColor.setOnPreferenceClickListener(this);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
@@ -96,6 +106,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         } else {
             mPrefCategory.removePreference(mNavigationBarEditor);
         }
+        updateGlowTimesSummary();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -105,6 +116,27 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAV_BAR_COLOR, intHex);
+            return true;
+         } else if (preference == mNavigationBarGlowColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_GLOW_TINT, intHex);
+            return true;
+        } else if (preference == mGlowTimes) {
+            // format is (on|off) both in MS
+            String value = (String) newValue;
+            String[] breakIndex = value.split("\\|");
+            int onTime = Integer.valueOf(breakIndex[0]);
+            int offTime = Integer.valueOf(breakIndex[1]);
+
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_GLOW_DURATION[0], offTime);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_GLOW_DURATION[1], onTime);
+            updateGlowTimesSummary();
             return true;
         }
 
@@ -145,5 +177,30 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    private void updateGlowTimesSummary() {
+        int resId;
+        String combinedTime = Settings.System.getString(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_GLOW_DURATION[1]) + "|" +
+                Settings.System.getString(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_GLOW_DURATION[0]);
+
+        String[] glowArray = getResources().getStringArray(R.array.glow_times_values);
+
+        if (glowArray[0].equals(combinedTime)) {
+            resId = R.string.glow_times_off;
+            mGlowTimes.setValueIndex(0);
+        } else if (glowArray[1].equals(combinedTime)) {
+            resId = R.string.glow_times_superquick;
+            mGlowTimes.setValueIndex(1);
+        } else if (glowArray[2].equals(combinedTime)) {
+            resId = R.string.glow_times_quick;
+            mGlowTimes.setValueIndex(2);
+        } else {
+            resId = R.string.glow_times_normal;
+            mGlowTimes.setValueIndex(3);
+        }
+        mGlowTimes.setSummary(getResources().getString(resId));
     }
 }

@@ -5046,5 +5046,15 @@
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
+    <!-- Navigiation Bar Glow Settings -->
+    <string name="navigation_bar_tint_title">Navigation bar color</string>
+    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
+    <string name="glow_times_title">Button glow animation</string>
+    <string name="glow_times_off">Off</string>
+    <string name="glow_times_superquick">Super quick</string>
+    <string name="glow_times_quick">Quick</string>
+    <string name="glow_times_normal">Normal</string>
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
