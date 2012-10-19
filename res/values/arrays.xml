@@ -1838,7 +1838,6 @@
         <item>Ring/Vib</item>
         <item>Ring/Silent</item>
         <item>Ring/Vib/Silent</item>
-        <item>Kill App</item>
         <item>Screen Off</item>
         <item>Google Now</item>
         <item>Select Application</item>
@@ -1851,7 +1850,6 @@
         <item>ring_vib</item>
         <item>ring_silent</item>
         <item>ring_vib_silent</item>
-        <item>killcurrent</item>
         <item>screenoff</item>
         <item>assist</item>
         <item>app</item>

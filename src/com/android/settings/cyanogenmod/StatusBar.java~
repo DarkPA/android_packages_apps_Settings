@@ -157,7 +157,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarWeekday.setOnPreferenceChangeListener(this);
 
         int statusBarWeekdayFormat = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+<<<<<<< HEAD
+                Settings.System.STATUS_BAR_WEEKDAY_FORMAT, 0);
+=======
                 Settings.System.STATUS_BAR_WEEKDAY_FORMAT, 1);
+>>>>>>> 4fe4721... Different formats of day of the week (2/2)
         mStatusBarWeekdayFormat.setValue(String.valueOf(statusBarWeekdayFormat));
         mStatusBarWeekdayFormat.setSummary(mStatusBarWeekdayFormat.getEntry());
         mStatusBarWeekdayFormat.setOnPreferenceChangeListener(this);

@@ -58,6 +58,11 @@
         android:title="@string/navigation_bar_title" />
 
     <PreferenceScreen
+        android:key="general_ui"
+        android:fragment="com.android.settings.cyanogenmod.GeneralUI"
+        android:title="@string/general_ui_title" />
+
+    <PreferenceScreen
         android:key="hardware_keys"
         android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
         android:title="@string/hardware_keys_title" />
