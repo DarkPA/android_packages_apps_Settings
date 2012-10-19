@@ -1,10 +1,11 @@
+
 package com.android.settings.util;
+
+import android.util.Log;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
-
-import android.util.Log;
 
 public class CMDProcessor {
 

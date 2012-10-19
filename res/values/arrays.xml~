@@ -1021,7 +1021,6 @@
         <item>2</item>
     </string-array>
 
-<<<<<<< HEAD
     <string-array name="entries_transparency">
         <item>0%</item>
         <item>25%</item>
@@ -1036,7 +1035,8 @@
         <item>50</item>
         <item>25</item>
         <item>0</item>
-=======
+    </string-array>
+
     <string-array name="entries_status_bar_weekday_format">
         <item>Short (default)</item>
         <item>Medium</item>
@@ -1047,7 +1047,6 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
->>>>>>> 8d4f0a1... Different formats of day of the week (2/2)
     </string-array>
 
     <string-array name="entries_status_bar_battery" translatable="false">
@@ -1830,6 +1829,40 @@
   <item>100|10</item>
   <item>250|25</item>
   <item>500|50</item>
+    </string-array>
+
+    <string-array name="navring_dialog_entries">
+        <item>None</item>
+        <item>Take Screenshot</item>
+        <item>Kill App</item>
+        <item>Screen Off</item>
+        <item>Google Now</item>
+        <item>Select Application</item>
+    </string-array>
+    
+    <string-array name="navring_dialog_values">
+        <item>none</item>
+        <item>screenshot</item>
+        <item>killcurrent</item>
+        <item>screenoff</item>
+        <item>assist</item>
+        <item>app</item>
+    </string-array>
+
+    <string-array name="pref_navring_amount_entries">
+        <item>1 target</item>
+        <item>2 targets</item>
+        <item>3 targets</item>
+        <item>4 targets</item>
+        <item>5 targets</item>
+    </string-array>
+
+    <string-array name="pref_navring_amount_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
 </resources>

@@ -4365,18 +4365,18 @@
     <string name="navigation_bar_menu_locked">Locked</string>
     <string name="navigation_bar_left_title">Navigation bar on left</string>
     <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A reboot is recommended!)</string>
-    <string name="navbar_color_title">Navigation bar color</string>
+    <string name="navbar_color_title">Background color</string>
     <string name="navbar_color_summary">Change the color of the navigation bar</string>
-    <string name="navbar_restore_stock_color">Restore stock navigation bar color</string>
-    <string name="navbar_restore_stock_color_summary">Restore stock black color of the navigation bar</string>
+    <string name="navbar_restore_stock_color">Restore color</string>
+    <string name="navbar_restore_stock_color_summary">Restore default navigation bar color</string>
     <string name="navigation_bar_summary">Add/remove softkeys, change order</string>
-    <string name="navbar_advanced_summary">Softkey color, glow color, speed, etc..</string>
-    <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering, which make your usage ugly. Try not to set Transparency, i would go for Colors instead.</string>
+    <string name="navbar_advanced_summary">Softkey color, glow color, nav rings, etc..</string>
+    <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering.. You have been warned, please do not report in thread saying you having flickers in Navigation Bar. </string>
     <string name="menu_nav_bar_reset">Reset navigation bar</string>
 
     <!-- Advanced Navbar settings -->
     <string name="navbar_buttons_title">Navigation bar buttons</string>
-    <string name="navbar_advanced_title">Navigation bar customizer</string>
+    <string name="navbar_advanced_title">Navigation bar extra</string>
     <string name="color_settings">Color Settings</string>
     <string name="button_transparency_title">Nav button transparency</string>
     <string name="navigation_bar_tint_title">Navigation bar color</string>
@@ -5020,5 +5020,30 @@
     <string name="sms_security_check_limit_title">SMS message limit</string>
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
+
+    <!-- NavRing Targets -->
+    <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>
+    <string name="interface_softkey_settings">Softkey Settings</string>
+    <string name="interface_softkeys_pref_default_title">No Activity Selected</string>
+    <string name="interface_softkeys_pref_default_summary">Tap to select a custom long press activity</string>
+    <string name="interface_softkeys_activity_dialog_title">Select Activity</string>
+    <string name="interface_softkeys_reboot_title">Reboot Menu</string>
+    <string name="interface_softkeys_screenshot_title">Screenshot</string>
+    <string name="interface_softkeys_screenoff_title">Screen Off</string>
+    <string name="interface_softkeys_ime_switcher_title">Open IME Switcher</string>
+    <string name="interface_softkeys_ring_vib_title">Toggle Ring/Vib</string>
+    <string name="interface_softkeys_ring_silent_title">Toggle Ring/Silent</string>
+    <string name="interface_softkeys_ring_vib_silent_title">Toggle Ring/Vib/Silent</string>
+    <string name="interface_softkeys_kill_process_title">Kill App</string>
+    <string name="interface_softkey_package_removed">The previously selected package was not found</string>
+    <string name="interface_navring_settings">Navigation bar ring</string>
+    <string name="interface_navring_custom_pref_summary">Release on target to launch </string>
+    <string name="interface_navring_pref_default_summary">Tap to select a custom ring target activity</string>
+    <string name="interface_navring_assist_title">Google Now</string>
+    <string name="interface_navring">Ring Targets</string>
+    <string name="title_navring_amount">Number of navigation ring targets</string>
+    <string name="summary_navring_amount">Choose the number of ring targets</string>
+    <string name="interface_navring_settings_title">Navigation bar ring</string>
+    <string name="interface_navring_settings_summary">Edit your custom nav ring apps</string>
 
 </resources>

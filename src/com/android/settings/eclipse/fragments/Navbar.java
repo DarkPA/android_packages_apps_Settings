@@ -45,6 +45,7 @@ import android.os.PowerManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -66,10 +67,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.settings.R;
+import com.android.settings.cyanogenmod.NavRingTargets;
 import com.android.settings.eclipse.SettingsPreferenceFragment;
 import com.android.settings.widget.NavBarItemPreference;
 import com.android.settings.widget.SeekBarPreference;
 import com.android.settings.widget.TouchInterceptor;
+import com.android.settings.util.Helpers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -85,11 +88,15 @@ public class Navbar extends SettingsPreferenceFragment implements
     private static final String PREF_NAV_COLOR = "nav_button_color";
     private static final String PREF_NAV_GLOW_COLOR = "nav_button_glow_color";
     private static final String PREF_GLOW_TIMES = "glow_times";
+    private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
+
+    Preference mNavRingTargets;
 
     ColorPickerPreference mNavigationBarColor;
     ColorPickerPreference mNavigationBarGlowColor;
     SeekBarPreference mButtonAlpha;
     ListPreference mGlowTimes;
+    ListPreference mNavRingButtonQty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,6 +110,13 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     mNavigationBarGlowColor = (ColorPickerPreference) findPreference(PREF_NAV_GLOW_COLOR);
     mNavigationBarGlowColor.setOnPreferenceChangeListener(this);
+
+    mNavRingTargets = findPreference("navring_settings");
+
+    mNavRingButtonQty = (ListPreference) findPreference(PREF_NAVRING_AMOUNT);
+        mNavRingButtonQty.setOnPreferenceChangeListener(this);
+        mNavRingButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1) + "");
 
     mGlowTimes = (ListPreference) findPreference(PREF_GLOW_TIMES);
     mGlowTimes.setOnPreferenceChangeListener(this);
@@ -130,6 +144,18 @@ public class Navbar extends SettingsPreferenceFragment implements
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+            Preference preference) {
+
+        if (preference == mNavRingTargets) {
+            ((PreferenceActivity) getActivity())
+                    .startPreferenceFragment(new NavRingTargets(), true);
+            return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
@@ -168,8 +194,29 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA, val / 100);
             return true;
+        } else if (preference == mNavRingButtonQty) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_AMOUNT, val);
+            resetNavRing();
+            refreshSettings();
+            Helpers.restartSystemUI();
+            return true;
         }
         return false;
+    }
+
+    public void resetNavRing() {
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_1, "none");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_2, "none");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_3, "assist");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_4, "none");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_5, "none");
     }
 
     private void updateGlowTimesSummary() {

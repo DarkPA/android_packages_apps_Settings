@@ -38,6 +38,7 @@ public class NavBarSettings extends SettingsPreferenceFragment {
     private static final String TAG = "NavBarSettings";
     private static final String KEY_NAVIGATION_ADVANCED = "navigation_bar_advanced";
     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
+    private static final String KEY_NAVIGATION_BAR_RING = "navring_settings";
 
     private PreferenceScreen mNavigationBar;
     private PreferenceScreen mNavigationBarAdvanced;
@@ -58,8 +59,10 @@ public class NavBarSettings extends SettingsPreferenceFragment {
         try {
             if (!windowManager.hasNavigationBar()) {
                 Preference naviBar = findPreference(KEY_NAVIGATION_BAR);
+                Preference naviBarRing = findPreference(KEY_NAVIGATION_BAR_RING);
                 if (naviBar != null) {
                     getPreferenceScreen().removePreference(naviBar);
+                    getPreferenceScreen().removePreference(naviBarRing);
                 }
             }
         } catch (RemoteException e) {
