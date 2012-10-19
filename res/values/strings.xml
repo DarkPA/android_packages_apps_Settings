@@ -4467,6 +4467,7 @@
     <string name="status_bar_transparency_title">Transparency</string>
     <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
     <string name="status_bar_battery_status_icon">Icon (default)</string> <!-- TODO: dedup -->
+    <string name="status_bar_battery_status_text">Text only</string>
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
