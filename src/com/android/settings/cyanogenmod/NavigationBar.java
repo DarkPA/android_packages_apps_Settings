@@ -104,7 +104,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
                     Integer.valueOf(String.valueOf(newValue)));
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVBAR_COLOR, intHex);
+                    Settings.System.NAV_BAR_COLOR, intHex);
             return true;
         }
 
@@ -116,7 +116,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         if (pref == mResetColor) {
             int color = 0xFF000000;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVBAR_COLOR, color);
+                    Settings.System.NAV_BAR_COLOR, color);
             mNavigationBarColor.onColorChanged(color);
         }
         return false;
