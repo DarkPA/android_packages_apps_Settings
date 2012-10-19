@@ -2269,9 +2269,5 @@
     <string name="cmupdate_settings_title">Actualizaciones CyanogenMod</string>
     <string name="cmupdate_settings_summary">Comprobar, ver e instalar actualizaciones disponibles</string>
 
-     <!-- Color Picker -->
-    <string name="dialog_color_picker">Selector de color</string>
-    <string name="press_color_to_apply">Presione en el color para aplicar</string>
-
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

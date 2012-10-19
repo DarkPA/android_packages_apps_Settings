@@ -5046,6 +5046,7 @@
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
      <!-- Color Picker -->
     <string name="dialog_color_picker">Color picker</string>
@@ -5054,6 +5055,8 @@
     <string name="arrow_right" translatable="false">→</string>
     <string name="arrow_down" translatable="false">↓</string>
 
+=======
+>>>>>>> 46bc0e0... Use ColorPickerPreference API
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 >>>>>>> 40a8f60... Add Navigation Bar Color (2/2)
 </resources>
