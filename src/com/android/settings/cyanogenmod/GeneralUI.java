@@ -71,7 +71,6 @@ import com.android.settings.util.Helpers;
 
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String PREF_VIBRATE_NOTIF_EXPAND = "vibrate_notif_expand";
-    private static final String SENSE4_RECENT_APPS_PREF = "pref_interface_sense4_recent_apps";
 
     CheckBoxPreference mUseAltResolver;
     CheckBoxPreference mVibrateOnExpand;
@@ -84,9 +83,6 @@ import com.android.settings.util.Helpers;
         addPreferencesFromResource(R.xml.general_ui);
 
         PreferenceScreen prefs = getPreferenceScreen();
-
-        mPrefSet = getPreferenceScreen();
-        mCr = getContentResolver();
 
         mUseAltResolver = (CheckBoxPreference) findPreference(PREF_USE_ALT_RESOLVER);
         mUseAltResolver.setChecked(Settings.System.getBoolean(getActivity  ().getContentResolver(),

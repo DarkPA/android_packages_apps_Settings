@@ -40,19 +40,19 @@ import com.android.settings.Utils;
 public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener  {
 
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
-    private static final String PREF_NAV_BAR_COLOR = "navbar_color";
-    private static final String PREF_NAV_BAR_COLOR_DEF = "navbar_color_default";
+    private static final String NAV_BAR_COLOR = "navbar_color";
+    private static final String NAV_BAR_COLOR_DEF = "navbar_color_default";
     private static final String NAV_BAR_STATUS = "nav_bar_status";
     private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String NAV_COLOR = "nav_button_color";
-    private static final String NAV_GLOW_COLOR = "nav_button_glow_color";
+    private static final String NAV_GLOW_COLOR = "nav_glow_color";
     private static final String GLOW_TIMES = "glow_times";
 
     private CheckBoxPreference mNavigationBarShow;
     private ColorPickerPreference mNavigationBarColor;
-    private ColorPickerPreference mNavigationBarGlowColor;
+    private ColorPickerPreference mNavBarGlowColor;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
@@ -72,8 +72,8 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavigationBarColor.setOnPreferenceChangeListener(this);
         mNavigationBarColor.setAlphaSliderEnabled(true);
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
-        mNavigationBarGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
-        mNavigationBarGlowColor.setOnPreferenceChangeListener(this);
+        mNavBarGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
+        mNavBarGlowColor.setOnPreferenceChangeListener(this);
         mGlowTimes = (ListPreference) findPreference(GLOW_TIMES);
         mGlowTimes.setOnPreferenceChangeListener(this);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
@@ -117,13 +117,13 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAV_BAR_COLOR, intHex);
             return true;
-         } else if (preference == mNavigationBarGlowColor) {
+         } else if (preference == mNavBarGlowColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_GLOW_TINT, intHex);
+                    Settings.System.NAV_GLOW_COLOR, intHex);
             return true;
         } else if (preference == mGlowTimes) {
             // format is (on|off) both in MS

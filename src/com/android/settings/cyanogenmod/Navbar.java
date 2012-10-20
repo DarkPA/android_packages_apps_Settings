@@ -16,7 +16,6 @@
 
 package com.android.settings.cyanogenmod;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -43,6 +42,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.CheckBoxPreference;
+import android.preference.ColorPickerPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -68,7 +68,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.NavRingTargets;
-import com.android.settings.cyanogenmod.SettingsPreferenceFragment;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.widget.NavBarItemPreference;
 import com.android.settings.widget.SeekBarPreference;
 import com.android.settings.widget.TouchInterceptor;
@@ -87,8 +87,8 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
 
-    Preference mNavRingTargets;
-    ListPreference mNavRingButtonQty;
+    private Preference mNavRingTargets;
+    private ListPreference mNavRingButtonQty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,18 +96,18 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.prefs_navbar);
+
         PreferenceScreen prefs = getPreferenceScreen();
 
-    mNavRingTargets = findPreference("navring_settings");
+        mNavRingTargets = findPreference("navring_settings");
 
-    mNavRingButtonQty = (ListPreference) findPreference(PREF_NAVRING_AMOUNT);
+        mNavRingButtonQty = (ListPreference) findPreference(PREF_NAVRING_AMOUNT);
         mNavRingButtonQty.setOnPreferenceChangeListener(this);
         mNavRingButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1) + "");
 
     }
 
-    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
 

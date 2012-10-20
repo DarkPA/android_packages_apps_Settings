@@ -4378,14 +4378,14 @@
     <string name="navigation_bar_restore_stock_color_summary">Restore default navigation bar color</string>
     <string name="navigation_bar_left_title">Navigation bar on left</string>
     <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A reboot is recommended!)</string>
-    <string name="navigation_bar_summary">Add/remove softkeys, change order</string>
-    <string name="navbar_advanced_summary">Softkey color, glow color, nav rings, etc..</string>
     <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering.. You have been warned, please do not report in thread saying you having flickers in Navigation Bar. </string>
     <string name="menu_nav_bar_reset">Reset navigation bar</string>
 
     <!-- Advanced Navbar settings -->
-    <string name="navbar_buttons_title">Navigation bar buttons</string>
+    <string name="navbar_buttons_title">Customization</string>
     <string name="nav_rings_title">Nav Rings Target</string>
+    <string name="navigation_bar_summary">Add/remove softkeys, change color, transparency</string>
+    <string name="navbar_advanced_summary">Customizing the targets when you press and hold home button...</string>
 
     <!-- NavRing Targets -->
     <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>
@@ -5021,16 +5021,6 @@
     <string name="pref_g_speed_summary">Uncap 3g speed</string>
     <string name="pref_gpu_title">GPU Acceleration</string>
     <string name="pref_gpu_summary">Enable hardware acceleration where the GPU controls the UI instead of the CPU</string>
-
-     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on Color to apply</string>
-    <string name="arrow_right">→</string>
-    <string name="arrow_down">↓</string>
-    <string name="hex">Hex:</string>
-    <string name="hex_hint">#FF000000</string>
-    <string name="set">Set</string>
-    <string name="ics_color">Holo</string>
 
     <!-- CM Circle Battery Color -->
     <string name="battery_charge_text_only_color">Battery charging text color</string>
