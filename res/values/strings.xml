@@ -4381,7 +4381,7 @@
 
     <!-- Advanced Navbar settings -->
     <string name="navbar_buttons_title">Navigation bar buttons</string>
-    <string name="navbar_advanced_title">Navigation bar extra</string>
+    <string name="navbar_advanced_title">Nav Rings Target</string>
 
     <!-- NavRing Targets -->
     <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>
