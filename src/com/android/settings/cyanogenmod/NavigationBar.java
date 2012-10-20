@@ -64,6 +64,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
         mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
+        mNavigationBarColor.setAlphaSliderEnabled(true);
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
