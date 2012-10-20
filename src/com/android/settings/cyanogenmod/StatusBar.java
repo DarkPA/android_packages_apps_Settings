@@ -19,6 +19,7 @@ package com.android.settings.cyanogenmod;
 import android.os.Bundle;
 import android.content.Context;
 import android.preference.CheckBoxPreference;
+import android.preference.ColorPickerPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -34,7 +35,6 @@ import com.android.settings.Utils;
 import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -51,8 +51,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String PREF_STATUSBAR_BACKGROUND_COLOR = "statusbar_background_color";
-    private static final String BATTERY_TEXT = "battery_text";
-    private static final String BATTERY_TEXT_COLOR = "battery_text_color";
     private static final String STATUS_BAR_WEEKDAY = "status_bar_weekday";
     private static final String STATUS_BAR_WEEKDAY_FORMAT = "status_bar_weekday_format";
     private static final String STATUS_BAR_DAYMONTH = "status_bar_daymonth";
@@ -74,10 +72,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarNotifCount;
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private PreferenceCategory mPrefCategoryGeneral;
-    private CheckBoxPreference mBattText;
     private PreferenceCategory mPrefCategoryClock;
-
-    PreferenceScreen mBattColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,13 +113,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
         mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
-
-        mBattText = (CheckBoxPreference) prefSet.findPreference(BATTERY_TEXT);
-        mBattText.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.BATTERY_TEXT, 0) == 1);
-
-        mBattColor = (PreferenceScreen) findPreference(BATTERY_TEXT_COLOR);
-        mBattColor.setEnabled(mBattText.isChecked());
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
@@ -197,7 +185,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         if (Utils.isTablet()) {
             mPrefCategoryClock.removePreference(mStatusBarCenterClock);
-            mPrefCategoryGeneral.removePreference(mBattText);
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
@@ -206,12 +193,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         }
     }
 
-    private void updateBatteryTextToggle(boolean bool) {
-        if (bool)
-            mBattColor.setEnabled(true);
-        else
-            mBattColor.setEnabled(false);
-    }
 
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -318,12 +299,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             value = mStatusBarNotifCount.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_NOTIF_COUNT, value ? 1 : 0);
-            return true;
-        } else if (preference == mBattText) {
-            value = mBattText.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.BATTERY_TEXT, value ? 1 : 0);
-            updateBatteryTextToggle(value);
             return true;
         }
         return false;
