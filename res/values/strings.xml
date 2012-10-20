@@ -4306,6 +4306,8 @@
     <string name="alt_resolver_summary">Switches to a app picker that one click selects the app also has always checkbox at bottom</string>
     <string name="vibrate_notif_expand_title">Vibrate on expand</string>
     <string name="vibrate_notif_expand_summary">Vibrate when expanding notifications (Reboot is recommended)</string>
+    <string name="pref_interface_sense4_recent_apps_title">Sense 4.0 recent apps</string>
+    <string name="pref_interface_sense4_recent_apps_summary">Enabling Sense 4 Style recents.</string>
 
     <!-- Statusbar Toggles -->
     <string name="notification_drawer_toggles_title">Notification toggles</string>
@@ -4372,10 +4374,6 @@
     <string name="navigation_bar_menu_locked">Locked</string>
     <string name="navigation_bar_left_title">Navigation bar on left</string>
     <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A reboot is recommended!)</string>
-    <string name="navbar_color_title">Background color</string>
-    <string name="navbar_color_summary">Change the color of the navigation bar</string>
-    <string name="navbar_restore_stock_color">Restore color</string>
-    <string name="navbar_restore_stock_color_summary">Restore default navigation bar color</string>
     <string name="navigation_bar_summary">Add/remove softkeys, change order</string>
     <string name="navbar_advanced_summary">Softkey color, glow color, nav rings, etc..</string>
     <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering.. You have been warned, please do not report in thread saying you having flickers in Navigation Bar. </string>
@@ -4384,16 +4382,6 @@
     <!-- Advanced Navbar settings -->
     <string name="navbar_buttons_title">Navigation bar buttons</string>
     <string name="navbar_advanced_title">Navigation bar extra</string>
-    <string name="color_settings">Color Settings</string>
-    <string name="button_transparency_title">Nav button transparency</string>
-    <string name="navigation_bar_tint_title">Navigation bar color</string>
-    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
-    <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
-    <string name="glow_times_title">Button glow animation</string>
-    <string name="glow_times_off">Off</string>
-    <string name="glow_times_superquick">Super quick</string>
-    <string name="glow_times_quick">Quick</string>
-    <string name="glow_times_normal">Normal</string>
 
     <!-- NavRing Targets -->
     <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.eclipse.fragments;
+package com.android.settings.cyanogenmod;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import android.app.Activity;
@@ -68,13 +68,11 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.cyanogenmod.NavRingTargets;
-import com.android.settings.eclipse.SettingsPreferenceFragment;
+import com.android.settings.cyanogenmod.SettingsPreferenceFragment;
 import com.android.settings.widget.NavBarItemPreference;
 import com.android.settings.widget.SeekBarPreference;
 import com.android.settings.widget.TouchInterceptor;
 import com.android.settings.util.Helpers;
-import com.android.settings.widgets.NavBarItemPreference;
-import com.android.settings.widgets.SeekBarPreference;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -87,17 +85,9 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     private static final boolean DEBUG = false;
 
-    private static final String PREF_NAV_COLOR = "nav_button_color";
-    private static final String PREF_NAV_GLOW_COLOR = "nav_button_glow_color";
-    private static final String PREF_GLOW_TIMES = "glow_times";
     private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
 
     Preference mNavRingTargets;
-
-    ColorPickerPreference mNavigationBarColor;
-    ColorPickerPreference mNavigationBarGlowColor;
-    SeekBarPreference mButtonAlpha;
-    ListPreference mGlowTimes;
     ListPreference mNavRingButtonQty;
 
     @Override
@@ -107,11 +97,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.prefs_navbar);
         PreferenceScreen prefs = getPreferenceScreen();
-    mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_COLOR);
-    mNavigationBarColor.setOnPreferenceChangeListener(this);
-
-    mNavigationBarGlowColor = (ColorPickerPreference) findPreference(PREF_NAV_GLOW_COLOR);
-    mNavigationBarGlowColor.setOnPreferenceChangeListener(this);
 
     mNavRingTargets = findPreference("navring_settings");
 
@@ -120,32 +105,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavRingButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1) + "");
 
-    mGlowTimes = (ListPreference) findPreference(PREF_GLOW_TIMES);
-    mGlowTimes.setOnPreferenceChangeListener(this);
-
-    float defaultAlpha = Settings.System.getFloat(getActivity()
-            .getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTON_ALPHA, 0.6f);
-    mButtonAlpha = (SeekBarPreference) findPreference("button_transparency");
-    mButtonAlpha.setInitValue((int) (defaultAlpha * 100));
-    mButtonAlpha.setOnPreferenceChangeListener(this);
-
-    updateGlowTimesSummary();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.reset:
-
-                Settings.System.putInt(getActivity().getContentResolver(),
-                        Settings.System.NAVIGATION_BAR_TINT, Integer.MIN_VALUE);
-                Settings.System.putInt(getActivity().getContentResolver(),
-                        Settings.System.NAVIGATION_BAR_GLOW_TINT, Integer.MIN_VALUE);
-                refreshSettings();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
     }
 
     @Override
@@ -162,41 +121,7 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mNavigationBarColor) {
-            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
-                    .valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_TINT, intHex);
-            return true;
-        } else if (preference == mNavigationBarGlowColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_GLOW_TINT, intHex);
-            return true;
-        } else if (preference == mGlowTimes) {
- 	 // format is (on|off) both in MS
- 	    String value = (String) newValue;
- 	    String[] breakIndex = value.split("\\|");
- 	    int onTime = Integer.valueOf(breakIndex[0]);
- 	    int offTime = Integer.valueOf(breakIndex[1]);
- 	 
-	    Settings.System.putInt(getActivity().getContentResolver(),
- 		Settings.System.NAVIGATION_BAR_GLOW_DURATION[0], offTime);
- 	    Settings.System.putInt(getActivity().getContentResolver(),
- 	 	Settings.System.NAVIGATION_BAR_GLOW_DURATION[1], onTime);
- 	    updateGlowTimesSummary();
- 	    return true;
-        } else if (preference == mButtonAlpha) {
-            float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_BUTTON_ALPHA, val / 100);
-            return true;
-        } else if (preference == mNavRingButtonQty) {
+        if (preference == mNavRingButtonQty) {
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEMUI_NAVRING_AMOUNT, val);
@@ -219,31 +144,6 @@ public class Navbar extends SettingsPreferenceFragment implements
                     Settings.System.SYSTEMUI_NAVRING_4, "none");
             Settings.System.putString(getActivity().getContentResolver(),
                     Settings.System.SYSTEMUI_NAVRING_5, "none");
-    }
-
-    private void updateGlowTimesSummary() {
-        int resId;
-        String combinedTime = Settings.System.getString(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_GLOW_DURATION[1]) + "|" +
-                Settings.System.getString(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_GLOW_DURATION[0]);
-
-        String[] glowArray = getResources().getStringArray(R.array.glow_times_values);
-
-        if (glowArray[0].equals(combinedTime)) {
-            resId = R.string.glow_times_off;
-            mGlowTimes.setValueIndex(0);
-        } else if (glowArray[1].equals(combinedTime)) {
-            resId = R.string.glow_times_superquick;
-            mGlowTimes.setValueIndex(1);
-        } else if (glowArray[2].equals(combinedTime)) {
-            resId = R.string.glow_times_quick;
-            mGlowTimes.setValueIndex(2);
-        } else {
-            resId = R.string.glow_times_normal;
-            mGlowTimes.setValueIndex(3);
-        }
-        mGlowTimes.setSummary(getResources().getString(resId));
     }
 
     public void refreshSettings() {
