@@ -1010,15 +1010,13 @@
     </string-array>
 
     <string-array name="entries_status_bar_clock">
-        <item>Normal</item>
-        <item>Small</item>
-        <item>None (default)</item>
+        <item>@string/status_bar_clock_normal</item>
+        <item>@string/status_bar_clock_small</item>
     </string-array>
 
     <string-array name="values_status_bar_clock" translatable="false">
         <item>0</item>
         <item>1</item>
-        <item>2</item>
     </string-array>
 
     <string-array name="entries_transparency">
