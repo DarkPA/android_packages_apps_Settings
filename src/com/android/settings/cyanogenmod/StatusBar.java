@@ -71,6 +71,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mCombinedBarAutoHide;
     private CheckBoxPreference mStatusBarNotifCount;
     private CheckBoxPreference mStatusBarDoNotDisturb;
+    private ColorPickerPreference mCmCirleRingColor;
+    private ColorPickerPreference mCmCirleRingColorCharge;
     private PreferenceCategory mPrefCategoryGeneral;
     private PreferenceCategory mPrefCategoryClock;
 
@@ -113,6 +115,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
         mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
+
+        mCmCirleRingColor = (ColorPickerPreference)
+                findPreference("battery_cmcircle_ring_color");
+        mCmCirleRingColor.setOnPreferenceChangeListener(this);
+
+        mCmCirleRingColorCharge = (ColorPickerPreference)
+                findPreference("battery_cmcircle_ring_color_charge");
+        mCmCirleRingColorCharge.setOnPreferenceChangeListener(this);
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
@@ -299,6 +309,22 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             value = mStatusBarNotifCount.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_NOTIF_COUNT, value ? 1 : 0);
+            return true;
+        } else if (preference == mCmCirleRingColor) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
+                    .valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CMCIRLE_RING_COLOR, intHex);
+            return true;
+        } else if (preference == mCmCirleRingColorCharge) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
+                    .valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CMCIRLE_RING_COLOR_CHARGE, intHex);
             return true;
         }
         return false;
