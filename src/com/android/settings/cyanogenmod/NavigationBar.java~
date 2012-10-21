@@ -52,7 +52,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
     private CheckBoxPreference mNavigationBarShow;
     private ColorPickerPreference mNavigationBarColor;
-    private ColorPickerPreference mNavGlowColor;
+    private ColorPickerPreference mNavigationBarGlowColor;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private CheckBoxPreference mNavbarLeftPref;
@@ -79,8 +79,9 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavbarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
         mResetColor = (Preference) findPreference(NAV_BAR_COLOR_DEF);
         mResetColor.setOnPreferenceClickListener(this);
-        mNavGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
-        mNavGlowColor.setOnPreferenceChangeListener(this);
+
+        mNavigationBarGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
+        mNavigationBarGlowColor.setOnPreferenceChangeListener(this);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
@@ -118,7 +119,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAV_BAR_COLOR, intHex);
             return true;
-         } else if (preference == mNavGlowColor) {
+         } else if (preference == mNavigationBarGlowColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);

@@ -4296,9 +4296,10 @@
     <!-- System Interface settings  -->
     <string name="system_settings_title">System</string>
     <string name="system_interface_title">System interface</string>
+    <string name="paranoid_title">Paranoid Customisation</string>
     
     <!-- ParanoidAndroid settings intent -->
-    <string name="paranoid_settings">Hybrid Settings</string>
+    <string name="paranoid_settings">Hybrid</string>
 
     <!-- General UI -->
     <string name="general_ui_title">General UI Interface</string>
@@ -5022,12 +5023,6 @@
     <string name="pref_gpu_title">GPU Acceleration</string>
     <string name="pref_gpu_summary">Enable hardware acceleration where the GPU controls the UI instead of the CPU</string>
 
-    <!-- CM Circle Battery Color -->
-    <string name="battery_charge_text_only_color">Battery charging text color</string>
-    <string name="battery_text_only_color">Battery text color</string>
-    <string name="battery_cm_circle_ring_color">CM circle mod ring color</string>
-    <string name="battery_cm_circle_ring_color_charge">CM circle mod charging ring color</string>
-
     <!--- Sms security limit -->
     <string name="app_security_title">App security</string>
     <string name="sms_security_check_limit_title">SMS message limit</string>
@@ -5035,8 +5030,8 @@
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- Navigiation Bar Glow Settings -->
-    <string name="navigation_bar_tint_title">Navigation bar color</string>
-    <string name="navigation_bar_glow_tint_title">Navigation bar glow color</string>
+    <string name="navigation_bar_tint_title">Softkeys color</string>
+    <string name="navigation_bar_glow_tint_title">Glow color</string>
     <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
     <string name="glow_times_title">Button glow animation</string>
     <string name="glow_times_off">Off</string>
