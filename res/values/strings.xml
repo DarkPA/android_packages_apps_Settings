@@ -4445,14 +4445,9 @@
 
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
-<<<<<<< HEAD
-    <string name="status_bar_title">Statusbar</string>
-=======
     <string name="status_bar_title">Status bar</string>
     <string name="status_bar_clock_normal">Normal</string>
     <string name="status_bar_clock_small">Small (default)</string>
->>>>>>> eff3aab... Reorganize status bar settings menu (1/2)
-    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_clock_title">Clock general</string>
     <string name="status_bar_cat_am_pm_title">AM/PM</string>
     <string name="status_bar_cat_weekday_title">Day of the week</string>
@@ -4464,21 +4459,12 @@
     <string name="status_bar_show_am_pm_title">Show AM/PM</string>
     <string name="status_bar_am_pm_size_title">AM/PM size</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-<<<<<<< HEAD
-    <string name="status_bar_weekday_title">Day of the week style</string>
-    <string name="status_bar_weekday_summary">Show abbreviated day of the week aside the clock</string>
-    <string name="status_bar_weekday_format_title">Day of the week format</string>
-    <string name="status_bar_weekday_format_summary">Change the format of abbreviation of day of the week</string>
-    <string name="status_bar_daymonth_title">Day and month style</string>
-    <string name="status_bar_daymonth_summary">Show current day and month aside the clock</string>
-=======
     <string name="status_bar_show_weekday_title">Show day of the week</string>
     <string name="status_bar_show_weekday_summary">Show abbreviated day of the week aside the clock</string>
     <string name="status_bar_weekday_size_title">Day of the week size</string>
     <string name="status_bar_show_daymonth_title">Show day and month</string>
     <string name="status_bar_show_daymonth_summary">Show current day and month aside the clock</string>
     <string name="status_bar_daymonth_size_title">Day and month size</string>
->>>>>>> eff3aab... Reorganize status bar settings menu (1/2)
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
@@ -5054,7 +5040,6 @@
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
-<<<<<<< HEAD
     <!-- Navigiation Bar Glow Settings -->
     <string name="navigation_bar_tint_title">Softkeys color</string>
     <string name="navigation_bar_glow_tint_title">Glow color</string>
@@ -5064,13 +5049,6 @@
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
-=======
-     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color picker</string>
-    <string name="press_color_to_apply">Press on color to apply</string>
-    <string name="hex">Hex:</string>
-    <string name="arrow_right" translatable="false">→</string>
-    <string name="arrow_down" translatable="false">↓</string>
 
     <!-- Navigiation Bar Color Settings -->
     <string name="navigation_bar_color_title">Navigation bar color</string>
@@ -5081,7 +5059,6 @@
     <string name="navigation_glow_color_summary">Changes the color of the on-touch glow.</string>
     <string name="navigation_bar_restore_stock_color">Restore color</string>
     <string name="navigation_bar_restore_stock_color_summary">Restore default navigation bar color</string>
->>>>>>> a8caddb... Nav Bar: Button color & Glow color and duration
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
