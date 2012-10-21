@@ -19,7 +19,6 @@
     android:title="@string/combined_status_bar_title">
 
     <!-- Status bar tweaks -->
-    <!-- Clock General -->
     <PreferenceCategory
         android:key="status_bar_clock"
         android:title="@string/status_bar_clock_title">
@@ -39,60 +38,31 @@
             android:title="@string/clock_color_title"
             android:defaultValue="@android:color/holo_blue_light" />
 
-    </PreferenceCategory>
-
-    <!-- Clock: AM/PM -->
-    <PreferenceCategory
-        android:key="status_bar_cat_am_pm"
-        android:title="@string/status_bar_cat_am_pm_title">
-
-        <CheckBoxPreference
-            android:key="status_bar_show_am_pm"
-            android:title="@string/status_bar_show_am_pm_title"
-            android:defaultValue="true" />
-
         <ListPreference
-            android:key="status_bar_am_pm_size"
-            android:dialogTitle="@string/status_bar_am_pm_size_title"
-            android:title="@string/status_bar_am_pm_size_title"
+            android:key="status_bar_am_pm"
+            android:dialogTitle="@string/status_bar_am_pm_title"
+            android:title="@string/status_bar_am_pm_title"
             android:entries="@array/entries_status_bar_clock"
             android:entryValues="@array/values_status_bar_clock" />
 
-    </PreferenceCategory>
-
-    <!-- Day of the week -->
-    <PreferenceCategory
-        android:key="status_bar_cat_weekday"
-        android:title="@string/status_bar_cat_weekday_title">
-
-        <CheckBoxPreference
-            android:key="status_bar_show_weekday"
-            android:title="@string/status_bar_show_weekday_title"
-            android:summary="@string/status_bar_show_weekday_summary"
-            android:defaultValue="true" />
-
         <ListPreference
-            android:key="status_bar_weekday_size"
-            android:title="@string/status_bar_weekday_size_title"
+            android:key="status_bar_weekday"
+            android:title="@string/status_bar_weekday_title"
+            android:summary="@string/status_bar_weekday_summary"
             android:entries="@array/entries_status_bar_clock"
             android:entryValues="@array/values_status_bar_clock" />
 
-    </PreferenceCategory>
-
-    <!-- Day and month -->
-    <PreferenceCategory
-        android:key="status_bar_cat_daymonth"
-        android:title="@string/status_bar_cat_daymonth_title">
-
-        <CheckBoxPreference
-            android:key="status_bar_show_daymonth"
-            android:title="@string/status_bar_show_daymonth_title"
-            android:summary="@string/status_bar_show_daymonth_summary"
-            android:defaultValue="true" />
+        <ListPreference
+            android:key="status_bar_weekday_format"
+            android:title="@string/status_bar_weekday_format_title"
+            android:summary="@string/status_bar_weekday_format_summary"
+            android:entries="@array/entries_status_bar_weekday_format"
+            android:entryValues="@array/values_status_bar_weekday_format" />
 
         <ListPreference
-            android:key="status_bar_daymonth_size"
-            android:title="@string/status_bar_daymonth_size_title"
+            android:key="status_bar_daymonth"
+            android:title="@string/status_bar_daymonth_title"
+            android:summary="@string/status_bar_daymonth_summary"
             android:entries="@array/entries_status_bar_clock"
             android:entryValues="@array/values_status_bar_clock" />
 

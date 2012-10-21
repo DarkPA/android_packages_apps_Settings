@@ -4441,26 +4441,20 @@
 
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
-    <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_clock_normal">Normal</string>
-    <string name="status_bar_clock_small">Small (default)</string>
-    <string name="status_bar_clock_title">Clock general</string>
-    <string name="status_bar_cat_am_pm_title">AM/PM</string>
-    <string name="status_bar_cat_weekday_title">Day of the week</string>
-    <string name="status_bar_cat_daymonth_title">Day and month</string>
+    <string name="status_bar_title">Statusbar</string>
+    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
     <string name="extra_misc_title">Misc</string>
     <string name="status_bar_show_clock_title">Show clock</string>
     <string name="status_bar_center_clock_title">Center clock</string>
-    <string name="status_bar_show_am_pm_title">Show AM/PM</string>
-    <string name="status_bar_am_pm_size_title">AM/PM size</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="status_bar_show_weekday_title">Show day of the week</string>
-    <string name="status_bar_show_weekday_summary">Show abbreviated day of the week aside the clock</string>
-    <string name="status_bar_weekday_size_title">Day of the week size</string>
-    <string name="status_bar_show_daymonth_title">Show day and month</string>
-    <string name="status_bar_show_daymonth_summary">Show current day and month aside the clock</string>
-    <string name="status_bar_daymonth_size_title">Day and month size</string>
+    <string name="status_bar_weekday_title">Day of the week style</string>
+    <string name="status_bar_weekday_summary">Show abbreviated day of the week aside the clock</string>
+    <string name="status_bar_weekday_format_title">Day of the week format</string>
+    <string name="status_bar_weekday_format_summary">Change the format of abbreviation of day of the week</string>
+    <string name="status_bar_daymonth_title">Day and month style</string>
+    <string name="status_bar_daymonth_summary">Show current day and month aside the clock</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
