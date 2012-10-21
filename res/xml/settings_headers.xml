@@ -17,31 +17,6 @@
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- PARANOID CUSTOMISATION -->
-    <header android:title="@string/header_category_paranoid" />
-
-    <!-- ParanoidAndroid Header -->
-    <header
-        android:id="@+id/paranoid_settings"
-        android:icon="@drawable/ic_settings_paranoid"
-        android:title="@string/paranoid_settings">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.paranoid.preferences"
-            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
-    </header>
-
-    <!-- Themes -->
-    <header
-        android:id="@+id/themes_settings"
-        android:icon="@drawable/ic_settings_themes"
-        android:title="@string/themes_settings_title">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.tmobile.themechooser"
-            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </header>
-
     <!-- WIRELESS and NETWORKS -->
     <header android:title="@string/header_category_wireless_networks" />
 
@@ -103,6 +78,29 @@
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.cyanogenmod.SystemSettings"
         android:title="@string/system_settings_title" />
+
+    <!-- ParanoidAndroid Header -->
+    <header
+        android:id="@+id/paranoid_settings"
+        android:icon="@drawable/ic_settings_paranoid"
+        android:title="@string/paranoid_settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
+    </header>
+
+    <!-- Themes -->
+    <header
+        android:id="@+id/themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tmobile.themechooser"
+            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </header>
+
 
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />

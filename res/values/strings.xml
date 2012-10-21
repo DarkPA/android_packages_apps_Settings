@@ -4444,6 +4444,7 @@
     <string name="status_bar_title">Statusbar</string>
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
+    <string name="status_bar_color_title">Colors</string>
     <string name="extra_misc_title">Misc</string>
     <string name="status_bar_show_clock_title">Show clock</string>
     <string name="status_bar_center_clock_title">Center clock</string>
@@ -4474,9 +4475,12 @@
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
     <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
-    <string name="statusbar_background_color">Statusbar background color</string>
+    <string name="statusbar_background_color_title">Statusbar background color</string>
+    <string name="statusbar_background_color_summary">Changes the color of the statusbar.</string>
     <string name="clock_color_title">Clock color</string>
-
+    <string name="clock_color_summary">Changes the color of the clock in statusbar and notification.</string>
+    <string name="status_bar_restore_stock_color">Restore Color</string>
+    <string name="status_bar_restore_stock_color_summary">Restore Statusbar Colors</string>
     <string name="lock_screen_title">Lock screen</string>
 
     <!-- Lock Screen Shortcuts -->
@@ -4576,6 +4580,7 @@
 
     <!-- Lock screen Text Color -->
     <string name="lockscreen_text_color_title">Lockscreen text color</string>
+    <string name="lockscreen_text_color_summary">Changes the colors of the lockscreen text.</string>
 
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profiles</string>

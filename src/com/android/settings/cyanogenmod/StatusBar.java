@@ -37,10 +37,12 @@ import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 
 
-public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
+    private static final String STATUS_BAR_CATEGORY_COLOR = "status_bar_color";
     private static final String STATUS_BAR_CATEGORY_CLOCK = "status_bar_clock";
+    private static final String STATUS_BAR_COLOR_DEF = "statusbar_color_default";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String NUMBER_NOT_ICONS = "status_bar_max_notifications";
@@ -72,7 +74,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mCombinedBarAutoHide;
     private CheckBoxPreference mStatusBarNotifCount;
     private CheckBoxPreference mStatusBarDoNotDisturb;
+    private Preference mResetColor;
     private PreferenceCategory mPrefCategoryGeneral;
+    private PreferenceCategory mPrefCategoryColor;
     private PreferenceCategory mPrefCategoryClock;
 
     @Override
@@ -104,6 +108,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         mStatusbarBgColor = (ColorPickerPreference) findPreference(PREF_STATUSBAR_BACKGROUND_COLOR);
         mStatusbarBgColor.setOnPreferenceChangeListener(this);
+
+        mResetColor = (Preference) findPreference(STATUS_BAR_COLOR_DEF);
+        mResetColor.setOnPreferenceClickListener(this);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
@@ -182,11 +189,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
+        mPrefCategoryColor = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_COLOR);
         mPrefCategoryClock = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_CLOCK);
 
         if (Utils.isTablet()) {
             mPrefCategoryClock.removePreference(mStatusBarCenterClock);
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
+            mPrefCategoryColor.removePreference(mStatusbarBgColor);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
             mPrefCategoryGeneral.removePreference(mMaxNotIcons);
@@ -194,6 +203,22 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         }
     }
 
+    @Override
+    public boolean onPreferenceClick(Preference pref) {
+        if (pref == mResetColor) {
+            int color = 0xFF000000;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_BACKGROUND_COLOR, color);
+            mStatusbarBgColor.onColorChanged(color);
+
+            color = 0xFF33B5E5;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CLOCK_COLOR, color);
+            mColorPicker.onColorChanged(color);
+
+        }
+        return false;
+    }
 
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {

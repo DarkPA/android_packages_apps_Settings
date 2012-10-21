@@ -135,9 +135,9 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             int offTime = Integer.valueOf(breakIndex[1]);
 
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_GLOW_DURATION[0], offTime);
+                    Settings.System.NAVIGATION_GLOW_DURATION[0], offTime);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_GLOW_DURATION[1], onTime);
+                    Settings.System.NAVIGATION_GLOW_DURATION[1], onTime);
             updateGlowTimesSummary();
             return true;
          } else if (preference == mNavigationButtonColor) {

@@ -57,6 +57,7 @@
      <ColorPickerPreference
         android:key="lockscreen_text_color"
         android:title="@string/lockscreen_text_color_title"
+        android:summary="@string/lockscreen_text_color_summary"
         android:defaultValue="#ffffffff" />
 
      <PreferenceScreen

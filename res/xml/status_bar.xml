@@ -33,11 +33,6 @@
             android:title="@string/status_bar_center_clock_title"
             android:defaultValue="false" />
 
-        <ColorPickerPreference
-            android:key="clock_color"
-            android:title="@string/clock_color_title"
-            android:defaultValue="@android:color/holo_blue_light" />
-
         <ListPreference
             android:key="status_bar_am_pm"
             android:dialogTitle="@string/status_bar_am_pm_title"
@@ -71,12 +66,6 @@
     <PreferenceCategory
         android:key="status_bar_general"
         android:title="@string/status_bar_general_title">
-
-        <ColorPickerPreference
-	    android:key="statusbar_background_color"
-	    android:title="@string/statusbar_background_color"
-	    android:defaultValue="#000000"
-	    alphaSlider="true" />
 
         <ListPreference
             android:key="status_bar_max_notifications"
@@ -123,6 +112,30 @@
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="status_bar_color"
+        android:title="@string/status_bar_color_title">
+
+        <ColorPickerPreference
+            android:key="clock_color"
+            android:title="@string/clock_color_title"
+            android:summary="@string/clock_color_summary"
+            android:defaultValue="@android:color/holo_blue_light" />
+
+        <ColorPickerPreference
+	    android:key="statusbar_background_color"
+	    android:title="@string/statusbar_background_color_title"
+            android:summary="@string/statusbar_background_color_summary"
+	    android:defaultValue="#000000"
+	    alphaSlider="true" />
+
+        <Preference
+            android:key="statusbar_color_default"
+            android:title="@string/status_bar_restore_stock_color"
+            android:summary="@string/status_bar_restore_stock_color_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

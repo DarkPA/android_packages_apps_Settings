@@ -41,13 +41,6 @@
             android:summary="@string/navigation_bar_left_summary"
             android:defaultValue="false" />
 
-        <ListPreference
-            android:key="nav_bar_transparency"
-            android:title="@string/navigation_bar_transparency_title"
-            android:summary="@string/navigation_bar_transparency_summary"
-            android:entries="@array/entries_transparency"
-            android:entryValues="@array/values_transparency"/>
-
         <CheckBoxPreference
             android:key="nav_bar_tabui_menu"
             android:title="@string/navigation_bar_tabui_menu_title"
@@ -82,24 +75,13 @@
             android:title="@string/navigation_bar_restore_stock_color"
             android:summary="@string/navigation_bar_restore_stock_color_summary" />
 
-        <ColorPickerPreference
-                android:key="nav_button_color"
-                android:title="@string/navigation_bar_tint_title"
-                android:defaultValue="#FFFFFF" />
-
-        <ColorPickerPreference
-                android:key="nav_button_glow_color"
-                android:title="@string/navigation_bar_glow_tint_title"
-                android:summary="@string/navigation_bar_glow_tint_summary"
-                android:defaultValue="#FFFFFF" />
-
         <ListPreference
-                android:entries="@array/glow_times_entries"
-                android:entryValues="@array/glow_times_values"
-                android:key="glow_times"
-                android:title="@string/glow_times_title"
-                android:defaultValue="100|10"
-                android:persistent="false" />
+            android:entries="@array/glow_times_entries"
+            android:entryValues="@array/glow_times_values"
+            android:key="glow_times"
+            android:title="@string/glow_times_title"
+            android:defaultValue="100|10"
+            android:persistent="false" />
 
     </PreferenceCategory>
 

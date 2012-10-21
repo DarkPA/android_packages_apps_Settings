@@ -1479,6 +1479,8 @@
 
         <activity android:name=".cyanogenmod.NavBarSettings" />
 
+        <activity android:name=".cyanogenmod.GeneralUI" />
+
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
@@ -1575,14 +1577,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".eclipse.fragments.Navbar"
-            android:label="Navigation Bar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-               <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
     </application>
 </manifest>
