@@ -40,10 +40,10 @@ import com.android.settings.Utils;
 public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener  {
 
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
-    private static final String NAV_BAR_COLOR = "navbar_color";
-    private static final String NAV_BUTTON_COLOR = "nav_button_color";
-    private static final String NAV_GLOW_COLOR = "nav_glow_color";
-    private static final String NAV_BAR_COLOR_DEF = "navbar_color_default";
+    private static final String NAV_BAR_COLOR = "nav_bar_color";
+    private static final String NAV_BUTTON_COLOR = "nav_bar_button_color";
+    private static final String NAV_GLOW_COLOR = "nav_bar_glow_color";
+    private static final String NAV_BAR_COLOR_DEF = "nav_bar_color_default";
     private static final String NAV_BAR_STATUS = "nav_bar_status";
     private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";

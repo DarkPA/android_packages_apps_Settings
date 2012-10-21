@@ -4360,10 +4360,10 @@
     <string name="combined_bar_auto_hide_summary">Allow combined bar to hide when showing a fullscreen app</string>
 
     <!-- Navigation Bar  -->
-    <string name="navigation_bar_button_cat">Navigation bar controls</string>
-    <string name="navigation_bar_color_cat">Color and behavior</string>
     <string name="navigation_bar_title">Navigation bar</string>
-    <string name="navigation_bar_editor_title">Control-button editor</string>
+    <string name="navigation_bar_button_category">Navigation bar controls</string>
+    <string name="navigation_bar_color_category">Navigation bar color</string>
+    <string name="navigation_bar_editor_title">Navigation bar editor</string>
     <string name="navigation_bar_status_title">Software buttons</string>
     <string name="navigation_bar_status_summary">Show on screen software buttons</string>
     <string name="navigation_bar_transparency_title">Transparency</string>
@@ -4382,6 +4382,15 @@
     <string name="navigation_bar_left_summary">Moves the navbar to the left during landscape (A reboot is recommended!)</string>
     <string name="navigation_bar_summary_warn">WARNING! Transparency to Navigation Bar might cause flickering.. You have been warned, please do not report in thread saying you having flickers in Navigation Bar. </string>
     <string name="menu_nav_bar_reset">Reset navigation bar</string>
+    <string name="navigation_bar_color_title">Navigation bar color</string>
+    <string name="navigation_bar_color_summary">Changes the color of the navigation bar</string>
+    <string name="navigation_bar_button_color_title">Navigation bar button color</string>
+    <string name="navigation_bar_button_color_summary">Changes the color of the navigation bar controls</string>
+    <string name="navigation_bar_glow_color_title">Navigation bar glow color</string>
+    <string name="navigation_bar_glow_color_summary">Changes the color of the navigation bar buttons glow</string>
+    <string name="navigation_bar_restore_stock_color">Restore color</string>
+    <string name="navigation_bar_restore_stock_color_summary">Restores default navigation bar colors</string>
+
 
     <!-- Advanced Navbar settings -->
     <string name="navbar_buttons_title">Customization</string>
@@ -4475,12 +4484,13 @@
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
     <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
-    <string name="statusbar_background_color_title">Statusbar background color</string>
-    <string name="statusbar_background_color_summary">Changes the color of the statusbar.</string>
     <string name="clock_color_title">Clock color</string>
     <string name="clock_color_summary">Changes the color of the clock in statusbar and notification.</string>
     <string name="status_bar_restore_stock_color">Restore Color</string>
     <string name="status_bar_restore_stock_color_summary">Restore Statusbar Colors</string>
+    <string name="status_bar_color_title">Status bar color</string>
+    <string name="status_bar_color_summary">Changes the color of the status bar</string>
+
     <string name="lock_screen_title">Lock screen</string>
 
     <!-- Lock Screen Shortcuts -->
@@ -5036,16 +5046,6 @@
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
-
-    <!-- Navigiation Bar Color Settings -->
-    <string name="navigation_bar_color_title">Navigation bar color</string>
-    <string name="navigation_button_color_title">Navigation bar button color</string>
-    <string name="navigation_glow_color_title">Navigation bar glow color</string>
-    <string name="navigation_bar_color_summary">Changes the color of the navigation bar.</string>
-    <string name="navigation_button_color_summary">Changes the color of the navigation controls.</string>
-    <string name="navigation_glow_color_summary">Changes the color of the on-touch glow.</string>
-    <string name="navigation_bar_restore_stock_color">Restore color</string>
-    <string name="navigation_bar_restore_stock_color_summary">Restore default navigation bar color</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

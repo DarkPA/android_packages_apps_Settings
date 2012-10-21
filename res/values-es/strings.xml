@@ -1837,6 +1837,9 @@
     <string name="combined_bar_auto_hide_title">"Ocultar automáticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permitir ocultar la barra de estado cuando una aplicación se muestra a pantalla completa"</string>
     <string name="navigation_bar_title">Barra de navegación</string>
+    <string name="navigation_bar_button_category">Controles</string>
+    <string name="navigation_bar_color_category">Color</string>
+    <string name="navigation_bar_editor_title">Editor de controles</string>
     <string name="navigation_bar_status_title">Botones virtuales</string>
     <string name="navigation_bar_status_summary">Mostrar los botones táctiles en la pantalla</string>
     <string name="navigation_bar_tabui_menu_title">Separar menú</string>
@@ -1851,8 +1854,12 @@
     <string name="navigation_bar_menu_locked">Bloqueada</string>
     <string name="navigation_bar_color_title">Color de fondo</string>
     <string name="navigation_bar_color_summary">Cambiar el color de la barra de navegación</string>
+    <string name="navigation_bar_button_color_title">Color de los botones</string>
+    <string name="navigation_bar_button_color_summary">Cambia el color de los botones de la barra de navegación</string>
+    <string name="navigation_bar_glow_color_title">Color del resplandor</string>
+    <string name="navigation_bar_glow_color_summary">Cambia el color del resplandor al tocar los botones de la barra de la navegación</string>
     <string name="navigation_bar_restore_stock_color">Restaurar color</string>
-    <string name="navigation_bar_restore_stock_color_summary">Restaurar el color por defecto de la barra de navegación</string>
+    <string name="navigation_bar_restore_stock_color_summary">Restaurar el color por defecto de la barra de navegación y sus controles</string>
     <string name="hardware_keys_title">Teclas físicas</string>
     <string name="key_menu_enabled">Tecla menú</string>
     <string name="key_back_enabled">Tecla atrás</string>
@@ -1937,6 +1944,8 @@
     <string name="status_bar_battery_status_percentage">"Porcentaje"</string>
     <string name="status_bar_battery_status_circle">Circular</string>
     <string name="status_bar_battery_status_circle_percentage">Circular con porcentaje</string>
+    <string name="status_bar_color_title">Color de fondo</string>
+    <string name="status_bar_color_summary">Cambia el color de la barra de estado</string>
     <string name="lock_screen_title">"Bloqueo de pantalla"</string>
     <string name="lockscreen_target_info">Arrastre el control deslizante para ajustar los accesos directos</string>
     <string name="lockscreen_target_title">Accesos directos</string>
