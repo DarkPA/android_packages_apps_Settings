@@ -4946,14 +4946,6 @@
     <string name="ime_switcher_notify">Selector notification</string>
     <string name="ime_switcher_notify_summary">Display input method selector notification</string>
 
-    <!-- Change Log strings -->
-    <string name="changelog_title">View changelog</string>
-    <string name="changelog_dialog">Changelog</string>
-    <string name="changelog_loading">Loading changelog...</string>
-    <string name="changelog_error">Unable to load changelog</string>
-    <string name="changelog_unknown">Unknown</string>
-    <string name="changelog_version">Version</string>
-
     <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
@@ -5040,7 +5032,7 @@
     <string name="navigation_bar_glow_tint_title">Glow color</string>
     <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
     <string name="glow_times_title">Button glow animation</string>
-    <string name="glow_times_off">Off</string>
+    <string name="glow_times_off">Extremely quick</string>
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
