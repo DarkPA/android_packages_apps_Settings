@@ -4476,8 +4476,6 @@
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
     <string name="status_bar_donotdisturb_title">Do not disturb</string>
-    <string name="status_bar_transparency_title">Transparency</string>
-    <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
     <string name="status_bar_battery_status_icon">Icon (default)</string> <!-- TODO: dedup -->
     <string name="status_bar_battery_status_text">Text only</string>
     <string name="status_bar_battery_status_percentage">Percentage</string>
@@ -4491,6 +4489,7 @@
     <string name="status_bar_color_title">Status bar color</string>
     <string name="status_bar_color_summary">Changes the color of the status bar</string>
 
+    <!-- Lock screen Title -->
     <string name="lock_screen_title">Lock screen</string>
 
     <!-- Lock Screen Shortcuts -->
@@ -4717,6 +4716,8 @@
     <string name="additional_options_title">Additional options</string>
     <string name="unlock_menu_unlock_title">Menu unlock</string>
     <string name="unlock_menu_unlock_summary">Pressing the menu button unlocks the device</string>
+    <string name="unlock_home_unlock_title">Home unlock</string>
+    <string name="unlock_home_unlock_summary">Pressing the home button unlocks the device</string>
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
@@ -5046,6 +5047,12 @@
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">App security</string>
+    <string name="sms_security_check_limit_title">SMS message limit</string>
+    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
+    <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

@@ -26,6 +26,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.UserId;
 import android.os.Vibrator;
@@ -76,9 +77,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String SLIDE_LOCK_TIMEOUT_DELAY = "slide_lock_timeout_delay";
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
     private static final String MENU_UNLOCK_PREF = "menu_unlock";
+    private static final String HOME_UNLOCK_PREF = "home_unlock";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
     private static final String LOCK_SYNC_ENCRYPTION_PASSWORD = "lock_sync_encryption_password";
+    private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
     public static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
 
     DevicePolicyManager mDPM;
@@ -99,6 +102,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private CheckBoxPreference mTactileFeedback;
 
     private CheckBoxPreference mMenuUnlock;
+    private CheckBoxPreference mHomeUnlock;
     private CheckBoxPreference mQuickUnlockScreen;
     private CheckBoxPreference mShowPassword;
 
@@ -107,6 +111,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private CheckBoxPreference mToggleAppInstallation;
     private DialogInterface mWarnInstallApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
+
+    private ListPreference mSmsSecurityCheck;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,6 +139,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
             isCmSecurity = args.getBoolean("cm_security");
         }
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+
+        // Add package manager to check if features are available
+        PackageManager pm = getPackageManager();
 
         // Add options for lock/unlock screen
         int resid = 0;
@@ -233,6 +242,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mMenuUnlock.setChecked(Settings.System.getInt(resolver,
                     Settings.System.MENU_UNLOCK_SCREEN, 0) == 1);
 
+            // Home Unlock
+            mHomeUnlock = (CheckBoxPreference) root.findPreference(HOME_UNLOCK_PREF);
+            mHomeUnlock.setChecked(Settings.System.getInt(resolver,
+                    Settings.System.HOME_UNLOCK_SCREEN, 0) == 1);
+
             // Vibrate on unlock
             mVibratePref = (CheckBoxPreference) findPreference(KEY_VIBRATE_PREF);
             mVibratePref.setChecked(Settings.System.getInt(resolver,
@@ -245,6 +259,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     || (mLockPatternUtils.isLockPatternEnabled())) {
                 mQuickUnlockScreen.setEnabled(false);
                 mMenuUnlock.setEnabled(false);
+                mHomeUnlock.setEnabled(false);
                 mVibratePref.setEnabled(false);
             // disable menu unlock and vibrate on unlock options if
             // using PIN/password as primary lock screen or as
@@ -252,6 +267,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             } else if (mLockPatternUtils.isLockPasswordEnabled()) {
                 mQuickUnlockScreen.setEnabled(true);
                 mMenuUnlock.setEnabled(false);
+                mHomeUnlock.setEnabled(false);
                 mVibratePref.setEnabled(false);
             // Disable the quick unlock if its not using PIN/password
             // as a primary lock screen or as a backup to biometric
@@ -263,6 +279,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (getActivity().getApplicationContext().getResources()
                     .getBoolean(com.android.internal.R.bool.config_showNavigationBar)) {
                 mMenuUnlock.setEnabled(false);
+            }
+            // Disable the HomeUnlock setting if no home button is available
+            if (getActivity().getApplicationContext().getResources()
+                    .getBoolean(com.android.internal.R.bool.config_disableHomeUnlockSetting)) {
+                mHomeUnlock.setEnabled(false);
             }
         }
 
@@ -340,6 +361,16 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     KEY_TOGGLE_INSTALL_APPLICATIONS);
             mToggleAppInstallation.setChecked(isNonMarketAppsAllowed());
         }
+
+        boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        if (isTelephony) {
+            addPreferencesFromResource(R.xml.security_settings_app_cyanogenmod);
+            mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
+            mSmsSecurityCheck.setOnPreferenceChangeListener(this);
+            int smsSecurityCheck = Integer.valueOf(mSmsSecurityCheck.getValue());
+            updateSmsSecuritySummary(smsSecurityCheck);
+         }
+
         return root;
     }
 
@@ -397,6 +428,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
         mSlideLockTimeoutDelay.setSummary(entries[best]);
+    }
+
+    private void updateSmsSecuritySummary(int i) {
+        String message = getString(R.string.sms_security_check_limit_summary, i);
+        mSmsSecurityCheck.setSummary(message);
     }
 
     private void updateSlideAfterScreenOffSummary() {
@@ -594,6 +630,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
         } else if (preference == mMenuUnlock) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.MENU_UNLOCK_SCREEN, isToggled(preference) ? 1 : 0);
+        } else if (preference == mHomeUnlock) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.HOME_UNLOCK_SCREEN, isToggled(preference) ? 1 : 0);
         }  else if (preference == mVibratePref) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_VIBRATE_ENABLED, isToggled(preference) ? 1 : 0);
@@ -661,6 +700,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.SCREEN_LOCK_SLIDE_SCREENOFF_DELAY, slideScreenOffDelay);
             updateSlideAfterScreenOffSummary();
+        } else if (preference == mSmsSecurityCheck) {
+            int smsSecurityCheck = Integer.valueOf((String) value);
+            Settings.Secure.putInt(getContentResolver(), Settings.Secure.SMS_OUTGOING_CHECK_MAX_COUNT,
+                     smsSecurityCheck);
+            updateSmsSecuritySummary(smsSecurityCheck);
         }
         return true;
     }
