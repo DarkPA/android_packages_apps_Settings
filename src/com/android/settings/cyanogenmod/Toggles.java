@@ -130,7 +130,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                 Settings.System.STATUSBAR_TOGGLES_STYLE, LAYOUT_TOGGLE)));
 
         int val = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1);
+                Settings.System.STATUSBAR_TOGGLES_LAYOUT, LAYOUT_TOGGLE);
 
         mTogglesLayout = (ListPreference) findPreference(PREF_ALT_BUTTON_LAYOUT);
         mTogglesLayout.setOnPreferenceChangeListener(this);
@@ -231,7 +231,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         } else if (preference == mTogglesLayout) {
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, val);
+                    Settings.System.STATUSBAR_TOGGLES_LAYOUT, val);
             adjustPreferences(val);
             return true;
         }
