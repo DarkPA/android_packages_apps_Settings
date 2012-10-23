@@ -135,9 +135,9 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
             int offTime = Integer.valueOf(breakIndex[1]);
 
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAV_GLOW_DURATION[0], offTime);
+                    Settings.System.NAV_BAR_GLOW_DURATION[0], offTime);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAV_GLOW_DURATION[1], onTime);
+                    Settings.System.NAV_BAR_GLOW_DURATION[1], onTime);
             updateGlowTimesSummary();
             return true;
          } else if (preference == mNavigationButtonColor) {
@@ -213,7 +213,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         String[] glowArray = getResources().getStringArray(R.array.glow_times_values);
 
         if (glowArray[0].equals(combinedTime)) {
-            resId = R.string.glow_times_off;
+            resId = R.string.glow_times_extreme;
             mGlowTimes.setValueIndex(0);
         } else if (glowArray[1].equals(combinedTime)) {
             resId = R.string.glow_times_superquick;

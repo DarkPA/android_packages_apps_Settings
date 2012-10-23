@@ -40,7 +40,7 @@ import com.android.settings.util.Helpers;
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
 
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
-    private static final String STATUS_BAR_CATEGORY_COLOR = "status_bar_color";
+    private static final String STATUS_BAR_CATEGORY_COLORS = "status_bar_colors";
     private static final String STATUS_BAR_CATEGORY_CLOCK = "status_bar_clock";
     private static final String STATUS_BAR_COLOR_DEF = "statusbar_color_default";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
@@ -69,7 +69,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarWeekday;
     private ListPreference mStatusBarWeekdayFormat;
     private ListPreference mStatusBarDaymonth;
-    private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarClock;
     private CheckBoxPreference mStatusBarCenterClock;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -78,7 +77,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private Preference mResetColor;
     private PreferenceCategory mPrefCategoryGeneral;
-    private PreferenceCategory mPrefCategoryColor;
+    private PreferenceCategory mPrefCategoryColors;
     private PreferenceCategory mPrefCategoryClock;
 
     @Override
@@ -192,12 +191,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
-        mPrefCategoryColor = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_COLOR);
+        mPrefCategoryColors = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_COLORS);
         mPrefCategoryClock = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_CLOCK);
 
         if (Utils.isTablet()) {
             mPrefCategoryClock.removePreference(mStatusBarCenterClock);
-            mPrefCategoryColor.removePreference(mStatusBarColor);
+            mPrefCategoryColors.removePreference(mStatusBarColor);
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
@@ -211,8 +210,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         if (pref == mResetColor) {
             int color = 0xFF000000;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BACKGROUND_COLOR, color);
-            mStatusbarBgColor.onColorChanged(color);
+                    Settings.System.STATUS_BAR_COLOR, color);
+            mStatusBarColor.onColorChanged(color);
 
             color = 0xFF33B5E5;
             Settings.System.putInt(getActivity().getContentResolver(),

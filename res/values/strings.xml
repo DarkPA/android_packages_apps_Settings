@@ -4453,7 +4453,7 @@
     <string name="status_bar_title">Statusbar</string>
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
-    <string name="status_bar_color_title">Colors</string>
+    <string name="status_bar_colors_title">Colors</string>
     <string name="extra_misc_title">Misc</string>
     <string name="status_bar_show_clock_title">Show clock</string>
     <string name="status_bar_center_clock_title">Center clock</string>
@@ -5043,16 +5043,10 @@
     <string name="navigation_bar_glow_tint_title">Glow color</string>
     <string name="navigation_bar_glow_tint_summary">When you press on a button, there is a glow. Use this to change the color of the glow.</string>
     <string name="glow_times_title">Button glow animation</string>
-    <string name="glow_times_off">Extremely quick</string>
+    <string name="glow_times_extreme">Extremely quick</string>
     <string name="glow_times_superquick">Super quick</string>
     <string name="glow_times_quick">Quick</string>
     <string name="glow_times_normal">Normal</string>
-
-    <!--- Sms security limit -->
-    <string name="app_security_title">App security</string>
-    <string name="sms_security_check_limit_title">SMS message limit</string>
-    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
-    <string name="sms_security_check_limit_default">30 (Default)</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
